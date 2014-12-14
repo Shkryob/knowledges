@@ -1,0 +1,25 @@
+<h3>Users</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="user in users">
+            <td>{{user.objectId}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>
+                <button type="button" 
+                        class="btn btn-danger"
+                        data-ng-click="delete(user.objectId)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
