@@ -9,20 +9,20 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">User Manager</a>
+                    <a class="navbar-brand" href="#">Knowledges</a>
                 </div>
                 <div class="navbar-form navbar-right">
                     <a href="#/login/"
                        class="btn btn-success"
-                       data-ng-if="!currentUser.username">Sign in</a>
+                       data-ng-if="!isLoggedIn()">Sign in</a>
                     <a href="#/register/"
                        class="btn btn-success"
-                       data-ng-if="!currentUser.username">Register</a>
+                       data-ng-if="!isLoggedIn()">Register</a>
 
                     <a href="#"
                        class="btn btn-success"
                        data-ng-click="logout($event)"
-                       data-ng-if="currentUser.username">Logout</a>
+                       data-ng-if="isLoggedIn()">Logout</a>
                 </div>
 
             </div>

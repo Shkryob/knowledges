@@ -1,15 +1,15 @@
 app.controller('MainController', ['$scope', '$location', 'Users', function ($scope, $location, Users) {
     Users.current(function (data) {
         $scope.currentUser = data;
-        if ($scope.currentUser.username) {
+        if ($scope.isLoggedIn()) {
             $location.path('/users/');
         } else {
             $location.path('/login/');
         }
     });
       
-    $scope.showError = function (error) {
-        alert(error.message);
+    $scope.showError = function (message) {
+        alert(message);
     };
     
     $scope.setUser = function (user) {
@@ -22,4 +22,8 @@ app.controller('MainController', ['$scope', '$location', 'Users', function ($sco
         $scope.currentUser = {};
         $location.path('/login/');
     };
+    
+    $scope.isLoggedIn = function() {
+        return $scope.currentUser && $scope.currentUser.email;
+    }
 }]);

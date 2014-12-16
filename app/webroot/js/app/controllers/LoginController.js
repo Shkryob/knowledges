@@ -3,8 +3,11 @@ app.controller('LoginController', ['$scope', '$location', 'Users', function ($sc
     
     $scope.login = function() {
         Users.login($scope.data, function(data) {
-            $scope.setUser(data);
-            $location.path('/users/');
+            if (data.success && data.user) {
+                $scope.setUser(data.user);
+                $location.path('/users/');
+            }
+            $scope.showError(data.message);
         }, function(response) {
             $scope.showError(response.data);
         });
