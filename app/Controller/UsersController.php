@@ -24,7 +24,91 @@ class UsersController extends AppController {
      */
     public function index() {
         $this->User->recursive = 0;
-        $this->set('users', $this->Paginator->paginate());
+        $this->jsonResponse($this->Paginator->paginate());
+    }
+    
+    /**
+     * register method
+     * 
+     * @return void
+     */
+    public function register() {
+        $message = '';
+        $success = false;
+        $data = array();
+        if ($this->request->is('post')) {
+            $this->User->create();
+            $user = $this->request->data;
+            $user['role_id'] = 1; //Pupil role
+            $user['password'] = sha1($user['password']);
+            if ($this->User->save($user)) {
+                $message = __('Registration completed.');
+                $success = true;
+            } else {
+                unset($user['password']);
+                $this->Session->write('user', $user);
+                $data['user'] = $user;
+                $message = __('The user could not be saved. Please, try again.');
+            }
+        }
+        
+        $data['message'] = $message;
+        $data['success'] = $success;
+        $this->jsonResponse($data);
+    }
+    
+    /**
+     * login method
+     * 
+     * @return void
+     */
+    public function login() {
+        $success = false;
+        $message = '';
+        if ($this->request->is('post')) {
+            $options = array('conditions' => array(
+                'User.email' => $this->request->data['email'],
+                'User.password' => sha1($this->request->data['password'])
+            ));
+            $user = $this->User->find('first', $options);
+            if ($user) {
+                unset($user['password']);
+                $this->Session->write('user', $user);
+                $data['user'] = $user;
+                $success = true;
+                $message = __('You are succesfully logged in.');
+            } else {
+                $message = __('Email and/or password are incorrect.');
+            }
+        }
+        $data['message'] = $message;
+        $data['success'] = $success;
+        $this->jsonResponse($data);
+    }
+    
+    /**
+     * current method
+     *
+     * @return void
+     */
+    public function current() {
+        $user = $this->Session->read('user');
+        if (!$user) {
+            $user = new stdClass();
+        }
+        $this->jsonResponse($user);
+    }
+    
+    /**
+     * logout method
+     *
+     * @return void
+     */
+    public function logout() {
+        $this->Session->destroy();
+        $data = array('message' => 'You have been logged out',
+            'success' => true);
+        $this->jsonResponse($data);
     }
 
     /**

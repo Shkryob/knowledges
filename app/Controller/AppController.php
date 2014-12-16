@@ -31,5 +31,18 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    
+
+    public $components = array('RequestHandler', 'Session');
+
+    public function beforeFilter() {
+        $this->RequestHandler->addInputType('json', array('json_decode', true));
+    }
+
+    public function jsonResponse($data) {
+        $this->autoRender = false;
+        $this->response->type('json');
+
+        $json = json_encode($data);
+        $this->response->body($json);
+    }
 }
