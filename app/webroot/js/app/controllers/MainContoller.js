@@ -1,4 +1,4 @@
-pp.controller('MainController', ['$scope', '$location', 'Users', function ($scope, $location, Users) {
+app.controller('MainController', ['$scope', '$location', 'Users', function ($scope, $location, Users) {
    Users.current(function (data) {
        $scope.currentUser = data;
        if ($scope.isLoggedIn()) {
