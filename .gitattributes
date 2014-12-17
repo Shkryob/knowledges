@@ -1,7 +1,7 @@
 # Define the line ending behavior of the different file extensions
 # Set default behaviour, in case users don't have core.autocrlf set.
 * text=auto
-* text eol=lf
+* text eol=crlf
 
 # Explicitly declare text files we want to always be normalized and converted
 # to native line endings on checkout.
@@ -22,6 +22,17 @@
 
 # Declare files that will always have CRLF line endings on checkout.
 *.bat eol=crlf
+*.js eol=crlf
+*.php eol=crlf
+*.css eol=crlf
+*.ctp eol=crlf
+*.sql eol=crlf
+*.ini eol=crlf
+*.txt eol=crlf
+*.xml eol=crlf
+*.xml eol=crlf
+*.yml eol=crlf
+*.properties eol=crlf
 
 # Declare files that will always have LF line endings on checkout.
 *.pem eol=lf
