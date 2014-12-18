@@ -10,6 +10,14 @@
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Knowledges</a>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#/users/">Users</a>
+                        </li>
+                        <li>
+                            <a href="#/lessons/">Lessons</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="navbar-form navbar-right">
                     <a href="#/login/"
@@ -51,9 +59,9 @@
         <script src="js/app/resources/UsersResource.js"></script>
 
         <script src="js/app/controllers/MainContoller.js"></script>
-        <script src="js/app/controllers/RegisterController.js"></script>
-        <script src="js/app/controllers/LoginController.js"></script>
-        <script src="js/app/controllers/ListController.js"></script>
-        <script src="js/app/controllers/EditController.js"></script>
+        <script src="js/app/controllers/users/RegisterController.js"></script>
+        <script src="js/app/controllers/users/LoginController.js"></script>
+        <script src="js/app/controllers/users/ListController.js"></script>
+        <script src="js/app/controllers/users/EditController.js"></script>
     </body>
 </html>
