@@ -1,9 +1,10 @@
 app.controller('MainController', ['$scope', '$location', 'Users', function ($scope, $location, Users) {
    Users.current(function (data) {
        $scope.currentUser = data;
-       if ($scope.isLoggedIn()) {
+       var path = $location.path();
+       if ($scope.isLoggedIn() && (path === '/login/' || path === '/register/')) {
            $location.path('/users/');
-       } else {
+       } else if (!$scope.isLoggedIn()) {
            $location.path('/login/');
        }
    });

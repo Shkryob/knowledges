@@ -54,5 +54,6 @@
         <script src="js/app/controllers/RegisterController.js"></script>
         <script src="js/app/controllers/LoginController.js"></script>
         <script src="js/app/controllers/ListController.js"></script>
+        <script src="js/app/controllers/EditController.js"></script>
     </body>
 </html>

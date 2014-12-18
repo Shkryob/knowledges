@@ -1,13 +1,14 @@
 app.factory('Users', ['$resource', function($resource) {
     var userMethods = {
-        update: {method:'PUT'},
+        update: {method:'PUT', url: '/users/edit/:id'},
         login: {method:'POST', url: '/users/login'},
         register: {method:'POST', 
             url: '/users/register', 
             headers:{'Content-Type': 'application/json'}},
         current: {method: 'GET', url: '/users/current'},
         logout: {method: 'GET', url: '/users/logout'},
+        delete: {method: 'GET', url: '/users/delete/:id'},
         query: { method: "GET", isArray: true }
     };
-    return $resource('/users/:id', null, userMethods);
+    return $resource('/users/:id', {id:'@id'}, userMethods);
 }]);

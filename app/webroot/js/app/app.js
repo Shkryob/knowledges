@@ -13,5 +13,9 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'views/list.html',
         controller: 'ListController'
     })
+    .when('/users/:id/', {
+        templateUrl: 'views/edit.html',
+        controller: 'EditController'
+    })
     .otherwise('/login/');
 });

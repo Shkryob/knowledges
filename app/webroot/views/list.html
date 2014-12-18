@@ -14,9 +14,13 @@
             <td>{{user.User.name}}</td>
             <td>{{user.User.email}}</td>
             <td>
+                <a class="btn btn-success"
+                   data-ng-href="{{'#/users/' + user.User.id}}">
+                    Edit
+                </a>
                 <button type="button" 
                         class="btn btn-danger"
-                        data-ng-click="delete(user.objectId)">
+                        data-ng-click="delete(user.User.id)">
                     Delete
                 </button>
             </td>
