@@ -1,4 +1,4 @@
-app.controller('ListController', ['$scope', 'Users', function ($scope, Users) {
+app.controller('UsersListController', ['$scope', 'Users', function ($scope, Users) {
     $scope.users = [];
 
     $scope.getUsers = function () {

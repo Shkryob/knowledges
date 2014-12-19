@@ -11,11 +11,21 @@ app.config(function($routeProvider, $locationProvider) {
     })
     .when('/users/', {
         templateUrl: 'views/users/list.html',
-        controller: 'ListController'
+        controller: 'UsersListController'
     })
     .when('/users/:id/', {
         templateUrl: 'views/users/edit.html',
-        controller: 'EditController'
+        controller: 'UsersEditController'
     })
+    
+    .when('/lessons/', {
+        templateUrl: 'views/lessons/list.html',
+        controller: 'LessonsListController'
+    })
+    .when('/lessons/:id/', {
+        templateUrl: 'views/lessons/edit.html',
+        controller: 'LessonsEditController'
+    })
+    
     .otherwise('/login/');
 });

@@ -1,0 +1,31 @@
+<h3>Lessons</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Start</th>
+            <th>End</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="lesson in lessons">
+            <td>{{lesson.Lesson.id}}</td>
+            <td>{{lesson.Lesson.name}}</td>
+            <td>{{lesson.Lesson.start}}</td>
+            <td>{{lesson.Lesson.end}}</td>
+            <td>
+                <a class="btn btn-success"
+                   data-ng-href="{{'#/users/' + user.User.id}}">
+                    Edit
+                </a>
+                <button type="button" 
+                        class="btn btn-danger"
+                        data-ng-click="delete(user.User.id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
