@@ -17,15 +17,19 @@
             <td>{{lesson.Lesson.end}}</td>
             <td>
                 <a class="btn btn-success"
-                   data-ng-href="{{'#/users/' + user.User.id}}">
+                   data-ng-href="{{'#/lessons/' + lesson.Lesson.id}}">
                     Edit
                 </a>
                 <button type="button" 
                         class="btn btn-danger"
-                        data-ng-click="delete(user.User.id)">
+                        data-ng-click="delete(lesson.Lesson.id)">
                     Delete
                 </button>
             </td>
         </tr>
     </tbody>
 </table>
+<a class="btn btn-success"
+    href="#/lessons/add/">
+    Add
+ </a>

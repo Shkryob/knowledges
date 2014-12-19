@@ -1,4 +1,5 @@
-<h3>Edit</h3>
+<h3 data-ng-if="id">Edit Lesson</h3>
+<h3 data-ng-if="!id">Add Lesson</h3>
 <form data-ng-submit="update()">
     <div class="form-group">
         <label>
@@ -9,14 +10,31 @@
     <div class="form-group">
         <label>
             Start:
-            <input type="text" data-ng-model="data.start" class="form-control" required>
+            <input type="text"
+                   datepicker-popup="dd MMMM yyyy"
+                   data-ng-model="data.start"
+                   is-open="startDate.isOpen"
+                   ng-click="startDate.isOpen=true"
+                   class="form-control" required>
         </label>
     </div>
     <div class="form-group">
         <label>
             End:
-            <input type="text" data-ng-model="data.end" class="form-control" required>
+            <input type="text"
+                   data-ng-model="data.end"
+                   datepicker-popup="dd MMMM yyyy"
+                   is-open="startEnd.isOpen"
+                   ng-click="startEnd.isOpen=true"
+                   class="form-control" required>
         </label>
     </div>
-    <button type="submit" class="btn btn-default">Update</button>
+    <button
+        type="submit"
+        class="btn btn-default"
+        data-ng-if="id">Update</button>
+    <button
+        type="submit"
+        class="btn btn-default"
+        data-ng-if="!id">Add</button>
 </form>

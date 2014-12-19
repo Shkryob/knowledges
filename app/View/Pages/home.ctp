@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>User Manager</title>
+        <title>Knowledges</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -52,7 +52,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-resource.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-route.js"></script>
-        <script src="js/vendor/ui-bootstrap-0.12.0.min.js"></script>
+        <script src="js/vendor/ui-bootstrap-tpls-0.12.0.min.js"></script>
 
         <script src="js/app/app.js"></script>
 
@@ -67,5 +67,6 @@
 
         <script src="js/app/controllers/lessons/ListController.js"></script>
         <script src="js/app/controllers/lessons/EditController.js"></script>
+        <script src="js/app/controllers/lessons/AddController.js"></script>
     </body>
 </html>
