@@ -39,6 +39,11 @@
 
         <div class="container">
             <div class="row">
+                <div class="alerts-wrap">
+                    <alert ng-repeat="alert in alerts"
+                           type="{{alert.type}}"
+                           close="closeAlert($index)">{{alert.message}}</alert>
+                </div>
                 <div class="col-md-12" ng-view>
 
                 </div>

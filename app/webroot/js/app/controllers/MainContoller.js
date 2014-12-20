@@ -1,5 +1,23 @@
-app.controller('MainController', ['$scope', '$location', 'Users', function ($scope, $location, Users) {
+app.controller('MainController', ['$scope', '$location', '$timeout', 'Users', 
+function ($scope, $location, $timeout, Users) {
     $scope.path = '';
+    
+    $scope.alerts = [];
+
+    $scope.showError = function (message) {
+        var alert = {message: message, type: "danger"};
+        $scope.alerts.push(alert);
+        $timeout(function(){
+            var index = $scope.alerts.indexOf(alert);
+            if (index !== -1) {
+                $scope.alerts.splice(index, 1);
+            }
+        }, 6000); 
+    };
+
+    $scope.closeAlert = function (index) {
+        $scope.alerts.splice(index, 1);
+    };
 
     Users.current(function (data) {
         $scope.currentUser = data;
@@ -10,10 +28,6 @@ app.controller('MainController', ['$scope', '$location', 'Users', function ($sco
             $location.path('/login/');
         }
     });
-
-    $scope.showError = function (message) {
-        alert(message);
-    };
 
     $scope.setUser = function (user) {
         $scope.currentUser = user;
