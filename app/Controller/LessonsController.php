@@ -39,7 +39,8 @@ class LessonsController extends AppController {
             throw new NotFoundException(__('Invalid lesson'));
         }
         $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
-        $this->set('lesson', $this->Lesson->find('first', $options));
+        $lesson = $this->Lesson->find('first', $options);
+        $this->jsonResponse($lesson['Lesson']);
     }
 
     /**
@@ -48,18 +49,22 @@ class LessonsController extends AppController {
      * @return void
      */
     public function add() {
+        $data = array();
+        $message = '';
         if ($this->request->is('post')) {
             $this->Lesson->create();
+            $data = $this->request->data;
+            $data['start'] = date('Y-m-d', strtotime($data['start']));
+            $data['end'] = date('Y-m-d', strtotime($data['end']));
             if ($this->Lesson->save($this->request->data)) {
-                $this->Session->setFlash(__('The lesson has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The lesson has been saved.');
+                $data['lesson'] = $this->Lesson;
             } else {
-                $this->Session->setFlash(__('The lesson could not be saved. Please, try again.'));
+                $message = __('The lesson could not be saved. Please, try again.');
             }
         }
-        $groups = $this->Lesson->Group->find('list');
-        $users = $this->Lesson->User->find('list');
-        $this->set(compact('groups', 'users'));
+        $data['message'] = $message;
+        $this->jsonResponse($data);
     }
 
     /**
@@ -70,23 +75,20 @@ class LessonsController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $data = array();
+        $message = '';
         if (!$this->Lesson->exists($id)) {
             throw new NotFoundException(__('Invalid lesson'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Lesson->save($this->request->data)) {
-                $this->Session->setFlash(__('The lesson has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The lesson has been saved.');
             } else {
-                $this->Session->setFlash(__('The lesson could not be saved. Please, try again.'));
+                $message = __('The lesson could not be saved. Please, try again.');
             }
-        } else {
-            $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
-            $this->request->data = $this->Lesson->find('first', $options);
         }
-        $groups = $this->Lesson->Group->find('list');
-        $users = $this->Lesson->User->find('list');
-        $this->set(compact('groups', 'users'));
+        $data['message'] = $message;
+        $this->jsonResponse($data);
     }
 
     /**
@@ -98,16 +100,20 @@ class LessonsController extends AppController {
      */
     public function delete($id = null) {
         $this->Lesson->id = $id;
+        $success = false;
+        $message = '';
         if (!$this->Lesson->exists()) {
             throw new NotFoundException(__('Invalid lesson'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Lesson->delete()) {
-            $this->Session->setFlash(__('The lesson has been deleted.'));
+            $message = __('The lesson has been deleted.');
         } else {
-            $this->Session->setFlash(__('The lesson could not be deleted. Please, try again.'));
+            $message = __('The lesson could not be deleted. Please, try again.');
         }
-        return $this->redirect(array('action' => 'index'));
+        $data = array('message' => $message,
+            'success' => $success);
+        $this->jsonResponse($data);
     }
 
 }

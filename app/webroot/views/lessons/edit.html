@@ -2,10 +2,8 @@
 <h3 data-ng-if="!id">Add Lesson</h3>
 <form data-ng-submit="update()">
     <div class="form-group">
-        <label>
-            Name:
-            <input type="text" data-ng-model="data.name" class="form-control" required>
-        </label>
+        <label for="name">Name:</label>
+        <input type="text" data-ng-model="data.name" class="form-control" id="name" required>
     </div>
     <div class="form-group">
         <label>
@@ -14,7 +12,8 @@
                    datepicker-popup="dd MMMM yyyy"
                    data-ng-model="data.start"
                    is-open="startDate.isOpen"
-                   ng-click="startDate.isOpen=true"
+                   datepicker-options="dateOptions"
+                   ng-click="startDate.isOpen = true"
                    class="form-control" required>
         </label>
     </div>
@@ -25,16 +24,28 @@
                    data-ng-model="data.end"
                    datepicker-popup="dd MMMM yyyy"
                    is-open="startEnd.isOpen"
-                   ng-click="startEnd.isOpen=true"
+                   ng-click="startEnd.isOpen = true"
                    class="form-control" required>
         </label>
     </div>
-    <button
-        type="submit"
-        class="btn btn-default"
-        data-ng-if="id">Update</button>
-    <button
-        type="submit"
-        class="btn btn-default"
-        data-ng-if="!id">Add</button>
+    <h3>Questions</h3>
+    <div data-ng-repeat="question in data.questions" class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">{{$index + 1}}.</span>
+            <input data-ng-model="question.question" type="text" class="form-control">
+            <span class="input-group-addon" data-ng-click="deleteQuestion(question)">
+                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button"
+            data-ng-click="addQuestion()"
+            class="btn btn-default">Add Question</button>
+    </div>
+    <div class="form-group">
+        <button
+            type="submit"
+            class="btn btn-default">Save</button>
+    </div>
 </form>

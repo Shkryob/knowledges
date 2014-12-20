@@ -6,7 +6,7 @@ app.controller('LessonsListController', ['$scope', 'Lessons', function ($scope, 
     };
     
     $scope.delete = function (id) {
-        Users.delete({'id': id}, function () {
+        Lessons.delete({'id': id}, function () {
             $scope.getLessons();
         });
     };
