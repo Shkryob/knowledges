@@ -6,9 +6,19 @@ App::uses('AppController', 'Controller');
  * Lessons Controller
  *
  * @property Lesson $Lesson
+ * @property Question $Question
  * @property PaginatorComponent $Paginator
  */
 class LessonsController extends AppController {
+    /**
+     * List of used models
+     *
+     * @var type 
+     */
+    public $uses = array(
+        'Lesson',
+        'Question'
+    );
 
     /**
      * Components
@@ -82,7 +92,11 @@ class LessonsController extends AppController {
             throw new NotFoundException(__('Invalid lesson'));
         }
         if ($this->request->is(array('post', 'put'))) {
+            $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
+            $oldQuestions = $this->Lesson->find('first', $options)['Question'];
             if ($this->Lesson->saveAssociated($this->request->data)) {
+                $newQuestions = $this->request->data['Question'];
+                $this->deleteUnusedQuestions($oldQuestions, $newQuestions);
                 $message = __('The lesson has been saved.');
             } else {
                 $message = __('The lesson could not be saved. Please, try again.');
@@ -90,6 +104,32 @@ class LessonsController extends AppController {
         }
         $data['message'] = $message;
         $this->jsonResponse($data);
+    }
+    
+    /**
+     * Delete questions that not associated with lesson anymore
+     * 
+     * @param array $oldQuestions
+     * @param array $newQuestions
+     */
+    public function deleteUnusedQuestions($oldQuestions, $newQuestions) {
+        $unusedQuestions = array();
+        foreach ($oldQuestions as $old) {
+            $unused = true;
+            foreach ($newQuestions as $new) {
+                if ($new['id'] === $old['id']) {
+                    $unused = false;
+                    break;
+                }
+            }
+            if ($unused) {
+                $unusedQuestions[] = $old['id'];
+            }
+        }
+        if ($unusedQuestions) {
+            $conditions = array('Question.' . $this->Question->primaryKey => $unusedQuestions);
+            $this->Question->deleteAll($conditions);
+        }
     }
 
     /**
