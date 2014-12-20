@@ -40,6 +40,7 @@ class LessonsController extends AppController {
         }
         $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
         $lesson = $this->Lesson->find('first', $options);
+        $lesson['Lesson']['Question'] = $lesson['Question'];
         $this->jsonResponse($lesson['Lesson']);
     }
 
@@ -81,7 +82,7 @@ class LessonsController extends AppController {
             throw new NotFoundException(__('Invalid lesson'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Lesson->save($this->request->data)) {
+            if ($this->Lesson->saveAssociated($this->request->data)) {
                 $message = __('The lesson has been saved.');
             } else {
                 $message = __('The lesson could not be saved. Please, try again.');

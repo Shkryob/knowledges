@@ -17,15 +17,15 @@ function ($scope, $routeParams, Lessons) {
     };
     
     $scope.addQuestion = function () {
-        if (!$scope.data.questions) {
-            $scope.data.questions = [];
+        if (!$scope.data.Question) {
+            $scope.data.Question = [];
         }
-        $scope.data.questions.push({});
+        $scope.data.Question.push({});
     };
     
     $scope.deleteQuestion = function (question) {
-        var index = $scope.data.questions.indexOf(question);
-        $scope.data.questions.splice(index, 1);
+        var index = $scope.data.Question.indexOf(question);
+        $scope.data.Question.splice(index, 1);
     };
     
     $scope.getLesson();
