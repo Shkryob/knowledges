@@ -52,7 +52,8 @@ class Lesson extends AppModel {
         'Question' => array(
             'className' => 'Question',
             'foreignKey' => 'lesson_id',
-            'dependent' => false,
+            'unique' => 'keepExisting',
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',

@@ -57,7 +57,7 @@ class LessonsController extends AppController {
             $data = $this->request->data;
             $data['start'] = date('Y-m-d', strtotime($data['start']));
             $data['end'] = date('Y-m-d', strtotime($data['end']));
-            if ($this->Lesson->save($this->request->data)) {
+            if ($this->Lesson->saveAssociated($this->request->data)) {
                 $message = __('The lesson has been saved.');
                 $data['lesson'] = $this->Lesson;
             } else {
