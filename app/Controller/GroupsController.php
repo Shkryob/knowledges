@@ -24,7 +24,7 @@ class GroupsController extends AppController {
      */
     public function index() {
         $this->Group->recursive = 0;
-        $this->set('groups', $this->Paginator->paginate());
+        $this->jsonResponse($this->Paginator->paginate());
     }
 
     /**
@@ -39,7 +39,8 @@ class GroupsController extends AppController {
             throw new NotFoundException(__('Invalid group'));
         }
         $options = array('conditions' => array('Group.' . $this->Group->primaryKey => $id));
-        $this->set('group', $this->Group->find('first', $options));
+        $group = $this->Group->find('first', $options);
+        $this->jsonResponse($group['Group']);
     }
 
     /**
@@ -48,15 +49,18 @@ class GroupsController extends AppController {
      * @return void
      */
     public function add() {
+        $data = array();
+        $message = '';
         if ($this->request->is('post')) {
             $this->Group->create();
             if ($this->Group->save($this->request->data)) {
-                $this->Session->setFlash(__('The group has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The group has been saved.');
             } else {
-                $this->Session->setFlash(__('The group could not be saved. Please, try again.'));
+                $message = __('The group could not be saved. Please, try again.');
             }
         }
+        $data['message'] = $message;
+        $this->jsonResponse($data);
     }
 
     /**
@@ -67,20 +71,20 @@ class GroupsController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $data = array();
+        $message = '';
         if (!$this->Group->exists($id)) {
             throw new NotFoundException(__('Invalid group'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Group->save($this->request->data)) {
-                $this->Session->setFlash(__('The group has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The group has been saved.');
             } else {
-                $this->Session->setFlash(__('The group could not be saved. Please, try again.'));
+                $message = __('The group could not be saved. Please, try again.');
             }
-        } else {
-            $options = array('conditions' => array('Group.' . $this->Group->primaryKey => $id));
-            $this->request->data = $this->Group->find('first', $options);
         }
+        $data['message'] = $message;
+        $this->jsonResponse($data);
     }
 
     /**
@@ -92,16 +96,20 @@ class GroupsController extends AppController {
      */
     public function delete($id = null) {
         $this->Group->id = $id;
+        $success = false;
+        $message = '';
         if (!$this->Group->exists()) {
             throw new NotFoundException(__('Invalid group'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Group->delete()) {
-            $this->Session->setFlash(__('The group has been deleted.'));
+            $message = __('The group has been deleted.');
         } else {
-            $this->Session->setFlash(__('The group could not be deleted. Please, try again.'));
+            $message = __('The group could not be deleted. Please, try again.');
         }
-        return $this->redirect(array('action' => 'index'));
+        $data = array('message' => $message,
+            'success' => $success);
+        $this->jsonResponse($data);
     }
 
 }

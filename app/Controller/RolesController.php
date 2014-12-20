@@ -24,7 +24,7 @@ class RolesController extends AppController {
      */
     public function index() {
         $this->Role->recursive = 0;
-        $this->set('roles', $this->Paginator->paginate());
+        $this->jsonResponse($this->Paginator->paginate());
     }
 
     /**
@@ -39,7 +39,8 @@ class RolesController extends AppController {
             throw new NotFoundException(__('Invalid role'));
         }
         $options = array('conditions' => array('Role.' . $this->Role->primaryKey => $id));
-        $this->set('role', $this->Role->find('first', $options));
+        $role = $this->Role->find('first', $options);
+        $this->jsonResponse($role['Role']);
     }
 
     /**
@@ -48,15 +49,18 @@ class RolesController extends AppController {
      * @return void
      */
     public function add() {
+        $data = array();
+        $message = '';
         if ($this->request->is('post')) {
             $this->Role->create();
             if ($this->Role->save($this->request->data)) {
-                $this->Session->setFlash(__('The role has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The role has been saved.');
             } else {
-                $this->Session->setFlash(__('The role could not be saved. Please, try again.'));
+                $message = __('The role could not be saved. Please, try again.');
             }
         }
+        $data['message'] = $message;
+        $this->jsonResponse($data);
     }
 
     /**
@@ -67,20 +71,20 @@ class RolesController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $data = array();
+        $message = '';
         if (!$this->Role->exists($id)) {
             throw new NotFoundException(__('Invalid role'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Role->save($this->request->data)) {
-                $this->Session->setFlash(__('The role has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The role has been saved.');
             } else {
-                $this->Session->setFlash(__('The role could not be saved. Please, try again.'));
+                $message = __('The role could not be saved. Please, try again.');
             }
-        } else {
-            $options = array('conditions' => array('Role.' . $this->Role->primaryKey => $id));
-            $this->request->data = $this->Role->find('first', $options);
         }
+        $data['message'] = $message;
+        $this->jsonResponse($data);
     }
 
     /**
@@ -92,16 +96,20 @@ class RolesController extends AppController {
      */
     public function delete($id = null) {
         $this->Role->id = $id;
+        $success = false;
+        $message = '';
         if (!$this->Role->exists()) {
             throw new NotFoundException(__('Invalid role'));
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Role->delete()) {
-            $this->Session->setFlash(__('The role has been deleted.'));
+            $message = __('The role has been deleted.');
         } else {
-            $this->Session->setFlash(__('The role could not be deleted. Please, try again.'));
+            $message = __('The role could not be deleted. Please, try again.');
         }
-        return $this->redirect(array('action' => 'index'));
+        $data = array('message' => $message,
+            'success' => $success);
+        $this->jsonResponse($data);
     }
 
 }

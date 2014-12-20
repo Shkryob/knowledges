@@ -1,0 +1,31 @@
+<h3>Roles</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="role in roles">
+            <td>{{role.Role.id}}</td>
+            <td>{{role.Role.name}}</td>
+            <td>
+                <a class="btn btn-success"
+                   data-ng-href="{{'#/roles/' + role.Role.id}}">
+                    Edit
+                </a>
+                <button type="button" 
+                        class="btn btn-danger"
+                        data-ng-click="delete(role.Role.id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-success"
+    href="#/roles/add/">
+    Add
+ </a>

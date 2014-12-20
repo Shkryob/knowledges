@@ -30,6 +30,32 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/edit.html',
         controller: 'LessonsEditController'
     })
+    
+    .when('/roles/', {
+        templateUrl: 'views/roles/list.html',
+        controller: 'RolesListController'
+    })
+    .when('/roles/add/', {
+        templateUrl: 'views/roles/edit.html',
+        controller: 'RolesAddController'
+    })
+    .when('/roles/:id/', {
+        templateUrl: 'views/roles/edit.html',
+        controller: 'RolesEditController'
+    })
+    
+    .when('/groups/', {
+        templateUrl: 'views/groups/list.html',
+        controller: 'GroupsListController'
+    })
+    .when('/groups/add/', {
+        templateUrl: 'views/groups/edit.html',
+        controller: 'GroupsAddController'
+    })
+    .when('/groups/:id/', {
+        templateUrl: 'views/groups/edit.html',
+        controller: 'GroupsEditController'
+    })
 
     .otherwise('/login/');
 });

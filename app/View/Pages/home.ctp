@@ -11,11 +11,17 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Knowledges</a>
                     <ul class="nav navbar-nav">
+                        <li data-ng-class="{'active': path=='/roles/'}">
+                            <a href="#/roles/">Roles</a>
+                        </li>
                         <li data-ng-class="{'active': path=='/users/'}">
                             <a href="#/users/">Users</a>
                         </li>
                         <li data-ng-class="{'active': path=='/lessons/'}">
                             <a href="#/lessons/">Lessons</a>
+                        </li>
+                        <li data-ng-class="{'active': path=='/groups/'}">
+                            <a href="#/groups/">Groups</a>
                         </li>
                     </ul>
                 </div>
@@ -61,8 +67,14 @@
 
         <script src="js/app/app.js"></script>
 
+        <script src="js/app/resources/RolesResource.js"></script>
         <script src="js/app/resources/UsersResource.js"></script>
         <script src="js/app/resources/LessonsResource.js"></script>
+        <script src="js/app/resources/GroupsResource.js"></script>
+        
+        <script src="js/app/controllers/roles/ListController.js"></script>
+        <script src="js/app/controllers/roles/EditController.js"></script>
+        <script src="js/app/controllers/roles/AddController.js"></script>
 
         <script src="js/app/controllers/MainContoller.js"></script>
         <script src="js/app/controllers/users/RegisterController.js"></script>
@@ -70,6 +82,10 @@
         <script src="js/app/controllers/users/ListController.js"></script>
         <script src="js/app/controllers/users/EditController.js"></script>
 
+        <script src="js/app/controllers/groups/ListController.js"></script>
+        <script src="js/app/controllers/groups/EditController.js"></script>
+        <script src="js/app/controllers/groups/AddController.js"></script>
+        
         <script src="js/app/controllers/lessons/ListController.js"></script>
         <script src="js/app/controllers/lessons/EditController.js"></script>
         <script src="js/app/controllers/lessons/AddController.js"></script>

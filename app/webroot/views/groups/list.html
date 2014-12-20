@@ -1,0 +1,31 @@
+<h3>Groups</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="group in groups">
+            <td>{{group.Group.id}}</td>
+            <td>{{group.Group.name}}</td>
+            <td>
+                <a class="btn btn-success"
+                   data-ng-href="{{'#/groups/' + group.Group.id}}">
+                    Edit
+                </a>
+                <button type="button" 
+                        class="btn btn-danger"
+                        data-ng-click="delete(group.Group.id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-success"
+    href="#/groups/add/">
+    Add
+ </a>
