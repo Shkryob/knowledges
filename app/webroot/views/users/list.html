@@ -5,6 +5,8 @@
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Role</th>
+            <th>Group</th>
             <th></th>
         </tr>
     </thead>
@@ -13,6 +15,8 @@
             <td>{{user.User.id}}</td>
             <td>{{user.User.name}}</td>
             <td>{{user.User.email}}</td>
+            <td>{{user.Role.name}}</td>
+            <td>{{user.Group.name}}</td>
             <td>
                 <a class="btn btn-success"
                    data-ng-href="{{'#/users/' + user.User.id}}">

@@ -15,6 +15,28 @@
     </div>
     <div class="form-group">
         <label>
+            Role:
+            <select
+                class="form-control"
+                data-ng-model="data.role"
+                data-ng-required=""
+                data-ng-options="role.Role.name for role in roles">
+            </select>
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            Group:
+            <select
+                class="form-control"
+                data-ng-model="data.group"
+                data-ng-required=""
+                data-ng-options="group.Group.name for group in groups">
+            </select>
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
             Password:
             <input type="password" data-ng-model="data.password" class="form-control">
         </label>
@@ -28,5 +50,5 @@
     <button
         type="submit"
         class="btn btn-default"
-        data-ng-if="id">Save</button>
+        data-ng-click="update()">Save</button>
 </form>

@@ -158,23 +158,20 @@ class UsersController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $data = array();
+        $message = '';
         if (!$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The user has been saved.');
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                $message = __('The user could not be saved. Please, try again.');
             }
-        } else {
-            $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-            $this->request->data = $this->User->find('first', $options);
         }
-        $roles = $this->User->Role->find('list');
-        $groups = $this->User->Group->find('list');
-        $this->set(compact('roles', 'groups'));
+        $data['message'] = $message;
+        $this->jsonResponse($data);
     }
 
     /**
