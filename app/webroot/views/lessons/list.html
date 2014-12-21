@@ -6,6 +6,7 @@
             <th>Title</th>
             <th>Start</th>
             <th>End</th>
+            <th>Group</th>
             <th></th>
         </tr>
     </thead>
@@ -15,6 +16,7 @@
             <td>{{lesson.Lesson.name}}</td>
             <td>{{lesson.Lesson.start}}</td>
             <td>{{lesson.Lesson.end}}</td>
+            <td>{{lesson.Group.name}}</td>
             <td>
                 <a class="btn btn-success"
                    data-ng-href="{{'#/lessons/' + lesson.Lesson.id}}">

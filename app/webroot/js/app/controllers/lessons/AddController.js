@@ -1,5 +1,5 @@
-app.controller('LessonsAddController', ['$scope', 'Lessons',
-function ($scope, Lessons) {
+app.controller('LessonsAddController', ['$scope', 'Lessons', 'Groups',
+function ($scope, Lessons, Groups) {
     $scope.data = {};
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -7,8 +7,10 @@ function ($scope, Lessons) {
     };
     $scope.id = 0;
     $scope.add = true;
+    $scope.groups = Groups.query();
 
     $scope.update = function () {
+        $scope.data.group_id = $scope.data.group.Group.id;
         Lessons.save($scope.data, function (data) {
             $scope.showError(data.message);
         }, function (response) {
