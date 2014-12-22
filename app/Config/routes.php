@@ -30,6 +30,15 @@ Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+Router::connect(
+    '/answers/view_my/:id',
+    array('controller' => 'answers',
+        'action' => 'viewMy'),
+    array(
+        'pass' => array('id'),
+        'id' => '[0-9]+'
+    )
+);
 
 Router::mapResources('users');
 Router::mapResources('groups');

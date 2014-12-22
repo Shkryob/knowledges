@@ -56,6 +56,15 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'views/groups/edit.html',
         controller: 'GroupsEditController'
     })
+    
+    .when('/answer/', {
+        templateUrl: 'views/answers/list.html',
+        controller: 'AnswersListController'
+    })
+    .when('/answer/:id/', {
+        templateUrl: 'views/answers/edit.html',
+        controller: 'AnswersEditController'
+    })
 
     .otherwise('/login/');
 });

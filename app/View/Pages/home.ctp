@@ -23,6 +23,12 @@
                         <li data-ng-class="{'active': path=='/groups/'}">
                             <a href="#/groups/">Groups</a>
                         </li>
+                        <li data-ng-class="{'active': path=='/answer/'}">
+                            <a href="#/answer/">Answer</a>
+                        </li>
+                        <li data-ng-class="{'active': path=='/evaluate/'}">
+                            <a href="#/evaluate/">Evaluate</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="navbar-form navbar-right">
@@ -71,6 +77,7 @@
         <script src="js/app/resources/UsersResource.js"></script>
         <script src="js/app/resources/LessonsResource.js"></script>
         <script src="js/app/resources/GroupsResource.js"></script>
+        <script src="js/app/resources/AnswersResource.js"></script>
         
         <script src="js/app/controllers/roles/ListController.js"></script>
         <script src="js/app/controllers/roles/EditController.js"></script>
@@ -89,5 +96,8 @@
         <script src="js/app/controllers/lessons/ListController.js"></script>
         <script src="js/app/controllers/lessons/EditController.js"></script>
         <script src="js/app/controllers/lessons/AddController.js"></script>
+        
+        <script src="js/app/controllers/answers/ListController.js"></script>
+        <script src="js/app/controllers/answers/EditController.js"></script>
     </body>
 </html>

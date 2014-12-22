@@ -24,7 +24,28 @@ class AnswersController extends AppController {
      */
     public function index() {
         $this->Answer->recursive = 0;
-        $this->set('answers', $this->Paginator->paginate());
+        $this->jsonResponse($this->Paginator->paginate());
+    }
+    
+    /**
+     * view_my method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function viewMy($id = null) {
+        $user = $this->Session->read('user');
+        
+        $conditions = array('Question.lesson_id' => $id,
+                            'Answer.user_id' => $user['id']);
+        $options = array('conditions' => $conditions);
+        $answers = $this->Answer->find('all', $options);
+        $answersFiltered = array();
+        foreach ($answers as $answer) {
+            $answersFiltered[$answer['Answer']['question_id']] = $answer['Answer'];
+        }
+        $this->jsonResponse((object) $answersFiltered);
     }
 
     /**
