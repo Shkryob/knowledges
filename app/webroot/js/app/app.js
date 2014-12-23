@@ -30,6 +30,10 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'views/lessons/edit.html',
         controller: 'LessonsEditController'
     })
+    .when('/lessons/evaluate/:id/', {
+        templateUrl: 'views/lessons/evaluate.html',
+        controller: 'LessonsEvaluateController'
+    })
     
     .when('/roles/', {
         templateUrl: 'views/roles/list.html',

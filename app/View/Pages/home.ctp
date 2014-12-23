@@ -26,9 +26,6 @@
                         <li data-ng-class="{'active': path=='/answer/'}">
                             <a href="#/answer/">Answer</a>
                         </li>
-                        <li data-ng-class="{'active': path=='/evaluate/'}">
-                            <a href="#/evaluate/">Evaluate</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="navbar-form navbar-right">
@@ -96,6 +93,7 @@
         <script src="js/app/controllers/lessons/ListController.js"></script>
         <script src="js/app/controllers/lessons/EditController.js"></script>
         <script src="js/app/controllers/lessons/AddController.js"></script>
+        <script src="js/app/controllers/lessons/EvaluateController.js"></script>
         
         <script src="js/app/controllers/answers/ListController.js"></script>
         <script src="js/app/controllers/answers/EditController.js"></script>

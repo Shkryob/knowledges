@@ -47,6 +47,49 @@ class AnswersController extends AppController {
         }
         $this->jsonResponse((object) $answersFiltered);
     }
+    
+    /**
+     * view_all method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function viewAll($id = null) {
+        $user = $this->Session->read('user');
+        
+        $conditions = array('Question.lesson_id' => $id);
+        $options = array('conditions' => $conditions);
+        $answers = $this->Answer->find('all', $options);
+        $answersFiltered = array();
+        foreach ($answers as $answer) {
+            $answersFiltered[$answer['Answer']['question_id']] = $answer['Answer'];
+        }
+        $this->jsonResponse((object) $answersFiltered);
+    }
+    
+    /**
+     * save_my method
+     *
+     * @throws NotFoundException
+     * @return void
+     */
+    public function saveMy() {
+        $user = $this->Session->read('user');
+        $message = '';
+        if ($this->request->is(array('post', 'put'))) {
+            foreach ($this->request->data as &$answer) {
+                $answer['user_id'] = $user['id'];
+            }
+            if ($this->Answer->saveAll($this->request->data)) {
+                $message = __('The answer has been saved.');
+            } else {
+                $message = __('The answer could not be saved. Please, try again.');
+            }
+        }
+        $data = array('message' => $message);
+        $this->jsonResponse($data);
+    }
 
     /**
      * view method

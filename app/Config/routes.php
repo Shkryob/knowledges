@@ -32,12 +32,23 @@ Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect(
     '/answers/view_my/:id',
-    array('controller' => 'answers',
-        'action' => 'viewMy'),
+    array('controller' => 'answers', 'action' => 'viewMy'),
     array(
         'pass' => array('id'),
         'id' => '[0-9]+'
     )
+);
+Router::connect(
+    '/answers/view_all/:id',
+    array('controller' => 'answers', 'action' => 'viewMy'),
+    array(
+        'pass' => array('id'),
+        'id' => '[0-9]+'
+    )
+);
+Router::connect(
+    '/answers/save_my',
+    array('controller' => 'answers', 'action' => 'saveMy')
 );
 
 Router::mapResources('users');

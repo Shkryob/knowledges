@@ -22,6 +22,10 @@
                    data-ng-href="{{'#/lessons/' + lesson.Lesson.id}}">
                     Edit
                 </a>
+                <a class="btn btn-success"
+                   data-ng-href="{{'#/lessons/evaluate/' + lesson.Lesson.id}}">
+                    Evaluate
+                </a>
                 <button type="button" 
                         class="btn btn-danger"
                         data-ng-click="delete(lesson.Lesson.id)">

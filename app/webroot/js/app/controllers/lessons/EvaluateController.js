@@ -1,20 +1,13 @@
-app.controller('AnswersEditController', ['$scope', '$routeParams', '$q', 'Lessons', 'Groups', 'Answers',
-function ($scope, $routeParams, $q, Lessons, Groups, Answers) {
+app.controller('LessonsEvaluateController', ['$scope', '$routeParams', '$q', 'Lessons', 'Groups',
+function ($scope, $routeParams, $q, Lessons, Groups) {
     $scope.data = {};
     $scope.id = $routeParams.id;
     $scope.groups = Groups.query();
-    $scope.answers = Answers.view_my({'id': $scope.id});
     
     $scope.update = function() {
-        var answers = [];
-        $scope.data['lesson_id'] = $scope.id;
-        angular.forEach($scope.answers, function (val, key) {
-            if (key !== '$promise' && key !== '$resolved') {
-                val['question_id'] = key;
-                answers.push(val);
-            }
-        });
-        Answers.save_my(answers, function(data) {
+        $scope.data['id'] = $scope.id;
+        $scope.data.group_id = $scope.data.group.Group.id;
+        Lessons.update($scope.data, function(data) {
             $scope.showError(data.message);
         }, function(response) {
             $scope.showError(response.data);
@@ -34,6 +27,18 @@ function ($scope, $routeParams, $q, Lessons, Groups, Answers) {
                 }
             });
         });
+    };
+    
+    $scope.addQuestion = function () {
+        if (!$scope.data.Question) {
+            $scope.data.Question = [];
+        }
+        $scope.data.Question.push({});
+    };
+    
+    $scope.deleteQuestion = function (question) {
+        var index = $scope.data.Question.indexOf(question);
+        $scope.data.Question.splice(index, 1);
     };
     
     $scope.getLesson();
