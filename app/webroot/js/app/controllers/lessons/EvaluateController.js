@@ -4,7 +4,6 @@ function ($scope, $routeParams, $q, Lessons, Groups, Answers) {
     $scope.id = $routeParams.id;
     $scope.groups = Groups.query();
     $scope.answers = Answers.view_all({'id': $routeParams.id});
-    $scope.maxMark = 10;
     
     $scope.evaluate = function() {
         var answers = [];

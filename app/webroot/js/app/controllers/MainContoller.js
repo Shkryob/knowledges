@@ -1,7 +1,7 @@
 app.controller('MainController', ['$scope', '$location', '$timeout', 'Users', 
 function ($scope, $location, $timeout, Users) {
     $scope.path = '';
-    
+    $scope.maxMark = 10;
     $scope.alerts = [];
 
     $scope.showError = function (message) {
