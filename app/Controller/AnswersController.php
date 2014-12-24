@@ -56,16 +56,20 @@ class AnswersController extends AppController {
      * @return void
      */
     public function viewAll($id = null) {
-        $user = $this->Session->read('user');
-        
         $conditions = array('Question.lesson_id' => $id);
         $options = array('conditions' => $conditions);
         $answers = $this->Answer->find('all', $options);
-        $answersFiltered = array();
+        $answersByUser = array();
         foreach ($answers as $answer) {
-            $answersFiltered[$answer['Answer']['question_id']] = $answer['Answer'];
+            $userId = $answer['Answer']['user_id'];
+            $questionId = $answer['Answer']['question_id'];
+            if (!isset($answersByUser[$userId])) {
+                $answersByUser[$userId]['name'] = $answer['User']['name'];
+                $answersByUser[$userId]['answers'] = array();
+            }
+            $answersByUser[$userId]['answers'][$questionId] = $answer['Answer'];
         }
-        $this->jsonResponse((object) $answersFiltered);
+        $this->jsonResponse((object) $answersByUser);
     }
     
     /**
@@ -134,23 +138,39 @@ class AnswersController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $message = '';
         if (!$this->Answer->exists($id)) {
             throw new NotFoundException(__('Invalid answer'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Answer->save($this->request->data)) {
-                $this->Session->setFlash(__('The answer has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $message = __('The answer has been saved.');
             } else {
-                $this->Session->setFlash(__('The answer could not be saved. Please, try again.'));
+                $message = __('The answer could not be saved. Please, try again.');
             }
-        } else {
-            $options = array('conditions' => array('Answer.' . $this->Answer->primaryKey => $id));
-            $this->request->data = $this->Answer->find('first', $options);
         }
-        $users = $this->Answer->User->find('list');
-        $questions = $this->Answer->Question->find('list');
-        $this->set(compact('users', 'questions'));
+        $data = array('message' => $message);
+        $this->jsonResponse($data);
+    }
+    
+    /**
+     * edit_all method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function editAll() {
+        $message = '';
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->Answer->saveAll($this->request->data)) {
+                $message = __('Answers has been saved.');
+            } else {
+                $message = __('Answers could not be saved. Please, try again.');
+            }
+        }
+        $data = array('message' => $message);
+        $this->jsonResponse($data);
     }
 
     /**

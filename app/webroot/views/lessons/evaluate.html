@@ -7,10 +7,31 @@
     <div>
         Group: {{data.group.Group.name}}
     </div>
-    <h3>Questions</h3>
-    <div data-ng-repeat="question in data.Question" class="form-group">
-        <b>{{$index + 1}}. {{question.question}}</b>
-    </div>
+    <h3>Answers</h3>
+    <tabset>
+        <tab ng-repeat="(key, user) in answers" heading="{{user.name}}" active="tab.active">
+            <div data-ng-repeat="question in data.Question" class="form-group">
+                <p>
+                    <b>{{$index + 1}}. Question:</b> {{question.question}}
+                </p>
+                <p>
+                    <b>Answer:</b> {{user.answers[question.id].text}}
+                </p>
+                <p>
+                    <b>Mark:</b>
+                    <rating ng-model="user.answers[question.id].mark"
+                            max="maxMark"
+                            state-on="'glyphicon-star'"
+                            state-off="'glyphicon-star-empty'"></rating>
+                </p>
+                <label>
+                    Comment:
+                </label>
+                <input type="text" ng-model="user.answers[question.id].comment">
+                
+            </div>
+        </tab>
+    </tabset>
     <div class="form-group">
         <button
             type="submit"

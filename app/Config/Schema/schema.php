@@ -14,6 +14,8 @@ class AppSchema extends CakeSchema {
 		'user_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => '4'),
 		'question_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => '4'),
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 11, 'key' => 'primary'),
+                'mark' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+		'comment' => array('type' => 'string', 'null' => false, 'default' => null),
 		'indexes' => array(
 			
 		),

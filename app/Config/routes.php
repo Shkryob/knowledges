@@ -40,11 +40,15 @@ Router::connect(
 );
 Router::connect(
     '/answers/view_all/:id',
-    array('controller' => 'answers', 'action' => 'viewMy'),
+    array('controller' => 'answers', 'action' => 'viewAll'),
     array(
         'pass' => array('id'),
         'id' => '[0-9]+'
     )
+);
+Router::connect(
+    '/answers/edit_all',
+    array('controller' => 'answers', 'action' => 'editAll')
 );
 Router::connect(
     '/answers/save_my',
