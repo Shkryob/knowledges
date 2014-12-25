@@ -29,7 +29,7 @@
             <b>{{'Comment' | translate}}:</b>
             {{answers[question.id].comment}}
         </p>
-        <hr>
+        <hr data-ng-if="!$last">
     </div>
     <div class="form-group">
         <button

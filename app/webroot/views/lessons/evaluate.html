@@ -28,7 +28,7 @@
                     {{'Comment' | translate}}:
                 </label>
                 <input type="text" ng-model="user.answers[question.id].comment">
-                <hr>
+                <hr data-ng-if="!$last">
             </div>
         </tab>
     </tabset>
