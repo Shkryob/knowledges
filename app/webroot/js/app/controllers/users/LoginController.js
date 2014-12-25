@@ -9,7 +9,7 @@ app.controller('LoginController', ['$scope', '$location', 'Users', function ($sc
         Users.login($scope.data, function(data) {
             if (data.success && data.user) {
                 $scope.setUser(data.user);
-                $location.path('/users/');
+                $scope.redirectAfterLogin();
             }
             $scope.showError(data.message);
         }, function(response) {

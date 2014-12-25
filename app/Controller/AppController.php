@@ -40,8 +40,20 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         $this->RequestHandler->addInputType('json', array('json_decode', true));
+        $user = $this->Session->read('user');
+        $aro = 'Role/0';
+        if ($user) {
+            $aro = 'Role/' . $user['role_id'];
+        }
+        $aco = 'controllers/' . $this->request->params['controller'];
+        $aco .= '/' . $this->request->params['action'];
+        if (!$this->Acl->check($aro, $aco)) {
+            $this->response->statusCode(403);
+            $this->response->send();
+            exit();
+        }
     }
-
+    
     public function jsonResponse($data) {
         $this->autoRender = false;
         $this->response->type('json');

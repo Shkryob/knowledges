@@ -9,7 +9,7 @@ app.controller('RegisterController', ['$scope', '$location', 'Users', function (
         Users.register($scope.data, function(data) {
             if (data.success && data.user) {
                 $scope.setUser(data.user);
-                $location.path('/users/');
+                $scope.redirectAfterLogin();
             }
             $scope.showError(data.message);
         }, function(response) {

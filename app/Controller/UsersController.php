@@ -39,13 +39,15 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             $user = $this->request->data;
-            $user['role_id'] = 1; //Pupil role
+            $user['role_id'] = 6; //Pupil role
             $user['password'] = sha1($user['password']);
             if ($this->User->save($user)) {
                 $message = __('Registration completed.');
                 $success = true;
                 unset($user['password']);
                 unset($user['password_confirmation']);
+                $user['role'] = 'Pupil';
+                $user['id'] = $this->User->getLastInsertID();
                 $this->Session->write('user', $user);
                 $data['user'] = $user;
             } else {
@@ -73,7 +75,9 @@ class UsersController extends AppController {
             ));
             $user = $this->User->find('first', $options);
             if ($user) {
+                $roleName = $user['Role']['name'];
                 $user = $user['User'];
+                $user['role'] = $roleName;
                 unset($user['password']);
                 $this->Session->write('user', $user);
                 $data['user'] = $user;

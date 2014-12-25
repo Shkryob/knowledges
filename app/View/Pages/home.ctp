@@ -11,20 +11,25 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">{{'Knowledges' | translate}}</a>
                     <ul class="nav navbar-nav">
-                        <li data-ng-class="{'active': path=='/roles/'}">
+                        <li data-ng-class="{'active': path=='/roles/'}"
+                            data-ng-if="currentUser.role == 'Admin'">
                             <a href="#/roles/">{{'Roles' | translate}}</a>
                         </li>
-                        <li data-ng-class="{'active': path=='/users/'}">
+                        <li data-ng-class="{'active': path=='/users/'}"
+                            data-ng-if="currentUser.role == 'Admin' || currentUser.role == 'Teacher'">
                             <a href="#/users/">{{'Users' | translate}}</a>
                         </li>
-                        <li data-ng-class="{'active': path=='/lessons/'}">
+                        <li data-ng-class="{'active': path=='/lessons/'}"
+                            data-ng-if="currentUser.role == 'Admin' || currentUser.role == 'Teacher'">
                             <a href="#/lessons/">{{'Lessons' | translate}}</a>
                         </li>
-                        <li data-ng-class="{'active': path=='/groups/'}">
+                        <li data-ng-class="{'active': path=='/groups/'}"
+                            data-ng-if="currentUser.role == 'Admin' || currentUser.role == 'Teacher'">
                             <a href="#/groups/">{{'Groups' | translate}}</a>
                         </li>
-                        <li data-ng-class="{'active': path=='/answer/'}">
-                            <a href="#/answer/">{{'Answer' | translate}}</a>
+                        <li data-ng-class="{'active': path=='/answer/'}"
+                            data-ng-if="currentUser.role == 'Pupil'">
+                            <a href="#/answer/">{{'Lessons' | translate}}</a>
                         </li>
                     </ul>
                 </div>

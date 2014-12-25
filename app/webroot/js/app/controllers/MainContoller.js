@@ -65,4 +65,14 @@ function ($scope, $location, $timeout, $translate, Users) {
     $scope.changeLanguage = function (langKey) {
         $translate.use(langKey);
     };
+    
+    $scope.redirectAfterLogin = function () {
+        if ($scope.currentUser.role == 'Admin') {
+            $location.path('/users/');
+        } else if ($scope.currentUser.role == 'Teacher') {
+            $location.path('/lessons/');
+        } else {
+            $location.path('/answer/');
+        }
+    }
 }]);
