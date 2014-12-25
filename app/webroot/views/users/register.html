@@ -1,28 +1,28 @@
-<h3>Register</h3>
+<h3>{{'Register' | translate}}</h3>
 <form data-ng-submit="register()">
     <div class="form-group">
         <label>
-            Name:
+            {{'Name' | translate}}:
             <input type="text" data-ng-model="data.name" class="form-control" required>
         </label>
     </div>
     <div class="form-group">
         <label>
-            Email:
+            {{'Email' | translate}}:
             <input type="email" data-ng-model="data.email" class="form-control" required>
         </label>
     </div>
     <div class="form-group">
         <label>
-            Password:
+            {{'Password' | translate}}:
             <input type="password" data-ng-model="data.password" class="form-control" required>
         </label>
     </div>
     <div class="form-group">
         <label>
-            Password Confirmation:
+            {{'Password Confirmation' | translate}}:
             <input type="password" data-ng-model="data.password_confirmation" class="form-control" required>
         </label>
     </div>
-    <button type="submit" class="btn btn-default">Register</button>
+    <button type="submit" class="btn btn-default">{{'Register' | translate}}</button>
 </form>

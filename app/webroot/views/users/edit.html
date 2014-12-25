@@ -1,21 +1,21 @@
-<h3 data-ng-if="id">Edit User</h3>
-<h3 data-ng-if="!id">Add User</h3>
+<h3 data-ng-if="id">{{'Edit User' | translate}}</h3>
+<h3 data-ng-if="!id">{{'Add User' | translate}}</h3>
 <form data-ng-submit="add()">
     <div class="form-group">
         <label>
-            Name:
+            {{'Username' | translate}}:
             <input type="text" data-ng-model="data.name" class="form-control" required>
         </label>
     </div>
     <div class="form-group">
         <label>
-            Email:
+            {{'Email' | translate}}:
             <input type="email" data-ng-model="data.email" class="form-control" required>
         </label>
     </div>
     <div class="form-group">
         <label>
-            Role:
+            {{'Role' | translate}}:
             <select
                 class="form-control"
                 data-ng-model="data.role"
@@ -26,7 +26,7 @@
     </div>
     <div class="form-group">
         <label>
-            Group:
+            {{'Group' | translate}}:
             <select
                 class="form-control"
                 data-ng-model="data.group"
@@ -37,18 +37,18 @@
     </div>
     <div class="form-group">
         <label>
-            Password:
+            {{'Password' | translate}}:
             <input type="password" data-ng-model="data.password" class="form-control">
         </label>
     </div>
     <div class="form-group">
         <label>
-            Password Confirmation:
+            {{'Password Confirmation' | translate}}:
             <input type="password" data-ng-model="data.password_confirmation" class="form-control">
         </label>
     </div>
     <button
         type="submit"
         class="btn btn-default"
-        data-ng-click="update()">Save</button>
+        data-ng-click="update()">{{'Save' | translate}}</button>
 </form>

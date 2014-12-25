@@ -9,37 +9,46 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Knowledges</a>
+                    <a class="navbar-brand" href="#">{{'Knowledges' | translate}}</a>
                     <ul class="nav navbar-nav">
                         <li data-ng-class="{'active': path=='/roles/'}">
-                            <a href="#/roles/">Roles</a>
+                            <a href="#/roles/">{{'Roles' | translate}}</a>
                         </li>
                         <li data-ng-class="{'active': path=='/users/'}">
-                            <a href="#/users/">Users</a>
+                            <a href="#/users/">{{'Users' | translate}}</a>
                         </li>
                         <li data-ng-class="{'active': path=='/lessons/'}">
-                            <a href="#/lessons/">Lessons</a>
+                            <a href="#/lessons/">{{'Lessons' | translate}}</a>
                         </li>
                         <li data-ng-class="{'active': path=='/groups/'}">
-                            <a href="#/groups/">Groups</a>
+                            <a href="#/groups/">{{'Groups' | translate}}</a>
                         </li>
                         <li data-ng-class="{'active': path=='/answer/'}">
-                            <a href="#/answer/">Answer</a>
+                            <a href="#/answer/">{{'Answer' | translate}}</a>
                         </li>
                     </ul>
                 </div>
                 <div class="navbar-form navbar-right">
+                    <div class="btn-group">
+                        <label  data-ng-repeat="lang in languages"
+                                data-ng-click="changeLanguage(lang.key)"
+                                data-ng-class='{"Left": $first, "Right": $last, "Middle": $middle}'
+                                class="btn btn-success"
+                                uncheckable>
+                            {{lang.name}}
+                        </label>
+                    </div>
                     <a href="#/login/"
                        class="btn btn-success"
-                       data-ng-if="!isLoggedIn()">Sign in</a>
+                       data-ng-if="!isLoggedIn()">{{'Sign in' | translate}}</a>
                     <a href="#/register/"
                        class="btn btn-success"
-                       data-ng-if="!isLoggedIn()">Register</a>
+                       data-ng-if="!isLoggedIn()">{{'Register' | translate}}</a>
 
                     <a href="#"
-                       class="btn btn-success"
+                       class="btn btn-danger"
                        data-ng-click="logout($event)"
-                       data-ng-if="isLoggedIn()">Logout</a>
+                       data-ng-if="isLoggedIn()">{{'Logout' | translate}}</a>
                 </div>
 
             </div>
@@ -51,7 +60,7 @@
                 <div class="alerts-wrap">
                     <alert ng-repeat="alert in alerts"
                            type="{{alert.type}}"
-                           close="closeAlert($index)">{{alert.message}}</alert>
+                           close="closeAlert($index)">{{alert.message | translate}}</alert>
                 </div>
                 <div class="col-md-12" ng-view>
 
@@ -67,6 +76,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-resource.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-route.js"></script>
         <script src="js/vendor/ui-bootstrap-tpls-0.12.0.min.js"></script>
+        <script src="js/vendor/angular-translate.min.js"></script>
+        <script src="js/vendor/angular-translate-loader-static-files.min.js"></script>
 
         <script src="js/app/app.js"></script>
 

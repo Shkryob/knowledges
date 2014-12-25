@@ -1,9 +1,9 @@
-<h3>Groups</h3>
+<h3>{{'Groups' | translate}}</h3>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
+            <th>{{'ID' | translate}}</th>
+            <th>{{'Name' | translate}}</th>
             <th></th>
         </tr>
     </thead>
@@ -14,12 +14,12 @@
             <td>
                 <a class="btn btn-success"
                    data-ng-href="{{'#/groups/' + group.Group.id}}">
-                    Edit
+                    {{'Edit' | translate}}
                 </a>
                 <button type="button" 
                         class="btn btn-danger"
                         data-ng-click="delete(group.Group.id)">
-                    Delete
+                    {{'Delete' | translate}}
                 </button>
             </td>
         </tr>
@@ -27,5 +27,5 @@
 </table>
 <a class="btn btn-success"
     href="#/groups/add/">
-    Add
+    {{'Add' | translate}}
  </a>

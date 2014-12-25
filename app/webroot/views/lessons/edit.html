@@ -1,13 +1,13 @@
-<h3 data-ng-if="id">Edit Lesson</h3>
-<h3 data-ng-if="!id">Add Lesson</h3>
+<h3 data-ng-if="id">{{'Edit Lesson' | translate}}</h3>
+<h3 data-ng-if="!id">{{'Add Lesson' | translate}}</h3>
 <form data-ng-submit="update()">
     <div class="form-group">
-        <label for="name">Lesson Name:</label>
+        <label for="name">{{'Lesson Name' | translate}}:</label>
         <input type="text" data-ng-model="data.name" class="form-control" id="name" required>
     </div>
     <div class="form-group">
         <label>
-            Start:
+            {{'Start' | translate}}:
             <input type="text"
                    datepicker-popup="dd MMMM yyyy"
                    data-ng-model="data.start"
@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         <label>
-            End:
+            {{'End' | translate}}:
             <input type="text"
                    data-ng-model="data.end"
                    datepicker-popup="dd MMMM yyyy"
@@ -30,7 +30,7 @@
     </div>
     <div class="form-group">
         <label>
-            Group:
+            {{'Group' | translate}}:
             <select
                 class="form-control"
                 data-ng-model="data.group"
@@ -39,7 +39,7 @@
             </select>
         </label>
     </div>
-    <h3>Questions</h3>
+    <h3>{{'Questions' | translate}}</h3>
     <div data-ng-repeat="question in data.Question" class="form-group">
         <div class="input-group">
             <span class="input-group-addon">{{$index + 1}}.</span>
@@ -52,11 +52,11 @@
     <div class="form-group">
         <button type="button"
             data-ng-click="addQuestion()"
-            class="btn btn-default">Add Question</button>
+            class="btn btn-default">{{'Add Question' | translate}}</button>
     </div>
     <div class="form-group">
         <button
             type="submit"
-            class="btn btn-default">Save</button>
+            class="btn btn-default">{{'Save' | translate}}</button>
     </div>
 </form>

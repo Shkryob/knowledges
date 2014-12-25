@@ -1,12 +1,12 @@
-<h3>Lessons</h3>
+<h3>{{'Lessons' | translate}}</h3>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Start</th>
-            <th>End</th>
-            <th>Group</th>
+            <th>{{'ID' | translate}}</th>
+            <th>{{'Title' | translate}}</th>
+            <th>{{'Start' | translate}}</th>
+            <th>{{'End' | translate}}</th>
+            <th>{{'Group' | translate}}</th>
             <th></th>
         </tr>
     </thead>
@@ -20,16 +20,16 @@
             <td>
                 <a class="btn btn-success"
                    data-ng-href="{{'#/lessons/' + lesson.Lesson.id}}">
-                    Edit
+                    {{'Edit' | translate}}
                 </a>
                 <a class="btn btn-success"
                    data-ng-href="{{'#/lessons/evaluate/' + lesson.Lesson.id}}">
-                    Evaluate
+                    {{'Evaluate' | translate}}
                 </a>
                 <button type="button" 
                         class="btn btn-danger"
                         data-ng-click="delete(lesson.Lesson.id)">
-                    Delete
+                    {{'Delete' | translate}}
                 </button>
             </td>
         </tr>
@@ -37,5 +37,5 @@
 </table>
 <a class="btn btn-success"
     href="#/lessons/add/">
-    Add
+    {{'Add' | translate}}
  </a>

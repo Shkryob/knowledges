@@ -1,8 +1,22 @@
-app.controller('MainController', ['$scope', '$location', '$timeout', 'Users', 
-function ($scope, $location, $timeout, Users) {
+app.controller('MainController', ['$scope', '$location', '$timeout', '$translate', 'Users', 
+function ($scope, $location, $timeout, $translate, Users) {
     $scope.path = '';
     $scope.maxMark = 12;
     $scope.alerts = [];
+    $scope.languages = [
+        {
+            'key': 'ua',
+            'name': 'Українська'
+        },
+        {
+            'key': 'ru',
+            'name': 'Русский'
+        },
+        {
+            'key': 'en',
+            'name': 'English'
+        }
+    ];
 
     $scope.showError = function (message) {
         var alert = {message: message, type: "danger"};
@@ -47,4 +61,8 @@ function ($scope, $location, $timeout, Users) {
     $scope.$on('$locationChangeStart', function (next, current) {
         $scope.path = $location.path();
     });
+    
+    $scope.changeLanguage = function (langKey) {
+        $translate.use(langKey);
+    };
 }]);

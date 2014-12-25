@@ -1,5 +1,11 @@
-var app = angular.module('UserManager', ['ui.bootstrap', 'ngResource', 'ngRoute']);
-app.config(function($routeProvider, $locationProvider) {
+var app = angular.module('UserManager', ['ui.bootstrap', 'ngResource', 'ngRoute', 'pascalprecht.translate']);
+app.config(function($routeProvider, $translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'js/app/langs/',
+        suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('ru');
+    
     $routeProvider
     .when('/login/', {
         templateUrl: 'views/users/login.html',

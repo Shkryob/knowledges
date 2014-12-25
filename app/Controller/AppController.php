@@ -32,7 +32,11 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    public $components = array('RequestHandler', 'Session');
+    public $components = array(
+        'Acl',
+        'RequestHandler',
+        'Session'
+    );
 
     public function beforeFilter() {
         $this->RequestHandler->addInputType('json', array('json_decode', true));
@@ -45,4 +49,5 @@ class AppController extends Controller {
         $json = json_encode($data);
         $this->response->body($json);
     }
+
 }
