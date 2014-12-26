@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Knowledges</title>
+        <title>Homework.in.ua</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -9,7 +9,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">{{'Knowledges' | translate}}</a>
+                    <a class="navbar-brand" href="#">{{'Homework.in.ua' | translate}}</a>
                     <ul class="nav navbar-nav">
                         <li data-ng-class="{'active': path=='/roles/'}"
                             data-ng-if="currentUser.role == 'Admin'">
