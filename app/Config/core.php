@@ -260,7 +260,7 @@
  * The class name and database used in CakePHP's
  * access control lists.
  */
-	Configure::write('Acl.classname', 'PHPAcl');
+	Configure::write('Acl.classname', 'PhpAcl');
 
 /**
  * Uncomment this line and correct your server timezone to fix
