@@ -83,6 +83,8 @@
         <script src="js/vendor/ui-bootstrap-tpls-0.12.0.min.js"></script>
         <script src="js/vendor/angular-translate.min.js"></script>
         <script src="js/vendor/angular-translate-loader-static-files.min.js"></script>
+        <script src="js/vendor/angular-file-upload-shim.min.js"></script>
+        <script src="js/vendor/angular-file-upload.min.js"></script>
 
         <script src="js/app/app.js"></script>
 

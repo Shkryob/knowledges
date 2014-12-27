@@ -35,7 +35,8 @@ class AppController extends Controller {
     public $components = array(
         'Acl',
         'RequestHandler',
-        'Session'
+        'Session',
+        'ImageCropResize.Image'
     );
 
     public function beforeFilter() {

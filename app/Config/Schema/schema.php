@@ -33,6 +33,8 @@ class AppSchema extends CakeSchema {
 
 	public $lessons = array(
 		'name' => array('type' => 'string', 'null' => false, 'default' => null),
+                'thumb_url' => array('type' => 'string', 'null' => false, 'default' => null),
+                'full_image_url' => array('type' => 'string', 'null' => false, 'default' => null),
 		'start' => array('type' => 'date', 'null' => true, 'default' => null),
 		'end' => array('type' => 'date', 'null' => true, 'default' => null),
 		'group_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => '4'),

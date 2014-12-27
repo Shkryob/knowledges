@@ -1,4 +1,9 @@
-var app = angular.module('UserManager', ['ui.bootstrap', 'ngResource', 'ngRoute', 'pascalprecht.translate']);
+var modules = ['ui.bootstrap',
+    'ngResource',
+    'ngRoute',
+    'pascalprecht.translate',
+    'angularFileUpload'];
+var app = angular.module('UserManager', modules);
 app.config(function($routeProvider, $translateProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: 'js/app/langs/',

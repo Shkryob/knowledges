@@ -6,6 +6,16 @@
         <input type="text" data-ng-model="data.name" class="form-control" id="name" required>
     </div>
     <div class="form-group">
+        <label for="image">{{'Featured Image' | translate}}:</label>
+        <input type="file"
+               accept="image/*" name="file"
+               ng-model="picFile"
+               ng-file-select="onFileSelect($files)">
+        <img data-ng-if="data['thumb_url']" data-ng-src="{{data['thumb_url']}}">
+        <br>
+        <button type="button" data-ng-click="clearImage()">{{'Clear Image' | translate}}</button>
+    </div>
+    <div class="form-group">
         <label>
             {{'Start' | translate}}:
             <input type="text"
