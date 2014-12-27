@@ -2,7 +2,8 @@ var modules = ['ui.bootstrap',
     'ngResource',
     'ngRoute',
     'pascalprecht.translate',
-    'angularFileUpload'];
+    'angularFileUpload',
+    'ngAnimate'];
 var app = angular.module('UserManager', modules);
 app.config(function($routeProvider, $translateProvider) {
     $translateProvider.useStaticFilesLoader({
