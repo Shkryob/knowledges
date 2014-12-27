@@ -10,8 +10,8 @@ App::uses('AppController', 'Controller');
  */
 class ImagesController extends AppController {
     private $thumbResizeOtions = array(
-        'width' => 150,
-        'height' => 150,
+        'width' => 250,
+        'height' => 250,
         'urlOnly' => true
     );
     
