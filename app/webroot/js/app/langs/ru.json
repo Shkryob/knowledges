@@ -94,5 +94,6 @@
     "The user has been saved.": "Пользователь сохранен.",
     "The user could not be saved. Please, try again.": "Пользователь не сохранен. Попробуйте еще раз.",
     "The user has been deleted.": "Пользователь удален.",
-    "The user could not be deleted. Please, try again.": "Пользователь не удален. Попробуйте еще раз."
+    "The user could not be deleted. Please, try again.": "Пользователь не удален. Попробуйте еще раз.",
+    "Search": "Искать"
 }

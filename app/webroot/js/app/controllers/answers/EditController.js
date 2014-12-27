@@ -4,6 +4,7 @@ function ($scope, $routeParams, $q, Lessons, Groups, Answers) {
     $scope.id = $routeParams.id;
     $scope.groups = Groups.query();
     $scope.answers = Answers.view_my({'id': $scope.id});
+    $scope.encodeURIComponent = encodeURIComponent;
     
     $scope.update = function() {
         var answers = [];

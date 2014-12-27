@@ -8,7 +8,14 @@
     </p>
     <div data-ng-repeat="question in data.Question" class="form-group">
         <p>
-            <b>{{$index + 1}}. {{'Question' | translate}}:</b> {{question.question}}
+            <b>{{$index + 1}}. {{'Question' | translate}}:</b>
+            {{question.question}}
+            <a href="http://www.bing.com/search?q={{encodeURIComponent(question.question)}}"
+               target="_blank">
+                <img src="http://www.bing.com/rms/rms answers Multimedia logo_orange/ic/7225291e/abda0a32.png"
+                     class="bing_logo">
+                {{'Search' | translate}}
+            </a>
         </p>
         <p>
             <label data-ng-attr-for="{{'answer_' + $index}}">
