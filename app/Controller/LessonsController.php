@@ -34,6 +34,9 @@ class LessonsController extends AppController {
      */
     public function index() {
         $this->Lesson->recursive = 0;
+        $this->Paginator->settings = array(
+            'order' => array('Lesson.end' => 'asc'),
+        );
         $this->jsonResponse($this->Paginator->paginate());
     }
 
