@@ -108,3 +108,6 @@ CakeLog::config('error', array(
 ));
 CakePlugin::load('DebugKit');
 CakePlugin::load('ImageCropResize');
+
+require_once ROOT . '/lib/PhpPowerpoint/Autoloader.php';
+\PhpOffice\PhpPowerpoint\Autoloader::register();

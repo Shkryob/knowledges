@@ -1,5 +1,5 @@
-app.controller('LessonsEvaluateController', ['$scope', '$routeParams', '$q', 'Lessons', 'Groups', 'Answers',
-function ($scope, $routeParams, $q, Lessons, Groups, Answers) {
+app.controller('LessonsEvaluateController', ['$scope', '$routeParams', '$q', '$http', 'Lessons', 'Groups', 'Answers',
+function ($scope, $routeParams, $q, $http, Lessons, Groups, Answers) {
     $scope.data = {};
     $scope.id = $routeParams.id;
     $scope.groups = Groups.query();
@@ -44,6 +44,15 @@ function ($scope, $routeParams, $q, Lessons, Groups, Answers) {
     $scope.deleteQuestion = function (question) {
         var index = $scope.data.Question.indexOf(question);
         $scope.data.Question.splice(index, 1);
+    };
+    
+    $scope.createSlideshow = function () {
+        $http.post('/presentations/add', {id: $scope.id})
+            .success(function (data, status, headers, config) {
+                if (data['url']) {
+                    window.location = data['url'];
+                }
+            });
     };
     
     $scope.getLesson();
