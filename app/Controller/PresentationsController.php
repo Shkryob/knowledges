@@ -20,6 +20,8 @@ class PresentationsController extends AppController {
         'Lesson',
         'Answer',
     );
+    private $width = 960;
+    private $height = 700;
 
     /**
      * add method
@@ -52,45 +54,41 @@ class PresentationsController extends AppController {
         $image = WWW_ROOT . $lesson['Lesson']['full_image_url'];
         $shape->setName($lesson['Lesson']['name'])
                 ->setPath($image)
-                ->setHeight(400)
-                ->setWidth(400)
-                ->setOffsetX(10)
-                ->setOffsetY(10);
-        $shape->getShadow()
-                ->setVisible(true)
-                ->setDirection(45)
-                ->setDistance(10);
+                ->setHeight($this->height)
+                ->setWidth($this->width);
     }
     
     private function addTitleText($objPHPPowerPoint, $lesson) {
         $currentSlide = $objPHPPowerPoint->getActiveSlide();
         $shape = $currentSlide->createRichTextShape()
-                ->setHeight(300)
-                ->setWidth(600)
-                ->setOffsetX(170)
-                ->setOffsetY(450);
+                ->setHeight($this->height)
+                ->setWidth($this->width);
         $shape->getActiveParagraph()
                 ->getAlignment()
                 ->setHorizontal(Powerpoin\Style\Alignment::HORIZONTAL_CENTER);
+        $shape->getActiveParagraph()
+                ->getAlignment()
+                ->setVertical(Powerpoin\Style\Alignment::VERTICAL_CENTER);
         $textRun = $shape->createTextRun($lesson['Lesson']['name']);
         $textRun->getFont()->setBold(true)
-                ->setSize(60)
-                ->setColor(new Powerpoin\Style\Color('FFE06B20'));
+                ->setSize(30)
+                ->setColor(new Powerpoin\Style\Color('FFFFFF0'));
     }
     
     private function addSlde($objPHPPowerPoint, $question) {
         $currentSlide = $objPHPPowerPoint->createSlide();
         $shape = $currentSlide->createRichTextShape()
-                ->setHeight(300)
-                ->setWidth(600)
-                ->setOffsetX(170)
-                ->setOffsetY(450);
+                ->setHeight($this->height)
+                ->setWidth($this->width);
         $shape->getActiveParagraph()
                 ->getAlignment()
                 ->setHorizontal(Powerpoin\Style\Alignment::HORIZONTAL_CENTER);
+        $shape->getActiveParagraph()
+                ->getAlignment()
+                ->setVertical(Powerpoin\Style\Alignment::VERTICAL_CENTER);
         $textRun = $shape->createTextRun($question['question']);
         $textRun->getFont()->setBold(true)
-                ->setSize(60)
-                ->setColor(new Powerpoin\Style\Color('FFE06B20'));
+                ->setSize(30)
+                ->setColor(new Powerpoin\Style\Color('FFFFFF0'));
     }
 }
