@@ -77,6 +77,7 @@ class PresentationsController extends AppController {
     
     private function addSlde($objPHPPowerPoint, $question) {
         $currentSlide = $objPHPPowerPoint->createSlide();
+        $answer = $this->getBestAnswer($question);
         $shape = $currentSlide->createRichTextShape()
                 ->setHeight($this->height)
                 ->setWidth($this->width);
@@ -86,9 +87,16 @@ class PresentationsController extends AppController {
         $shape->getActiveParagraph()
                 ->getAlignment()
                 ->setVertical(Powerpoin\Style\Alignment::VERTICAL_CENTER);
-        $textRun = $shape->createTextRun($question['question']);
+        $textRun = $shape->createTextRun($answer['text']);
         $textRun->getFont()->setBold(true)
                 ->setSize(30)
                 ->setColor(new Powerpoin\Style\Color('FFFFFF0'));
+    }
+    
+    private function getBestAnswer($question) {
+        $options = array('conditions' => array('Answer.question_id' => $question['id']),
+            'order' => array('Answer.mark' => 'desc'));
+        $answers = $this->Answer->find('first', $options);
+        return $answers['Answer'];
     }
 }
