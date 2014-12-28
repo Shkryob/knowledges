@@ -1,5 +1,5 @@
-app.controller('LessonsAddController', ['$scope', '$upload', 'Lessons', 'Groups',
-function ($scope, $upload, Lessons, Groups) {
+app.controller('LessonsAddController', ['$scope', '$upload', '$location', 'Lessons', 'Groups',
+function ($scope, $upload, $location, Lessons, Groups) {
     $scope.data = {};
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -36,8 +36,11 @@ function ($scope, $upload, Lessons, Groups) {
     };
 
     $scope.update = function () {
-        $scope.data.group_id = $scope.data.group.Group.id;
+        if ($scope.data.group) {
+            $scope.data.group_id = $scope.data.group.Group.id;
+        }
         Lessons.save($scope.data, function (data) {
+            $location.path('/lessons/' + data['lesson']['id'] + '/')
             $scope.showError(data.message);
         }, function (response) {
             $scope.showError(response.data);
