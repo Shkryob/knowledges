@@ -1,10 +1,11 @@
-app.controller('AnswersEditController', ['$scope', '$routeParams', '$q', 'Lessons', 'Groups', 'Answers',
-function ($scope, $routeParams, $q, Lessons, Groups, Answers) {
+app.controller('AnswersEditController', ['$scope', '$routeParams', '$q', '$sce', 'Lessons', 'Groups', 'Answers',
+function ($scope, $routeParams, $q, $sce, Lessons, Groups, Answers) {
     $scope.data = {};
     $scope.id = $routeParams.id;
     $scope.groups = Groups.query();
     $scope.answers = Answers.view_my({'id': $scope.id});
     $scope.encodeURIComponent = encodeURIComponent;
+    $scope.trustAsHtml = $sce.trustAsHtml;
     
     $scope.update = function() {
         var answers = [];

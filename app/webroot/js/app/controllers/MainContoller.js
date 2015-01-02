@@ -17,6 +17,9 @@ function ($scope, $location, $timeout, $translate, Users) {
             'name': 'English'
         }
     ];
+    $scope.editorOptions = {
+        language: 'ru'
+    };
 
     $scope.showError = function (message) {
         var alert = {message: message, type: "danger"};

@@ -86,6 +86,8 @@
         <script src="js/vendor/angular-translate-loader-static-files.min.js"></script>
         <script src="js/vendor/angular-file-upload-shim.min.js"></script>
         <script src="js/vendor/angular-file-upload.min.js"></script>
+        <script src="js/vendor/ng-ckeditor.min.js"></script>
+        <script src="js/vendor/ckeditor/ckeditor.js"></script>
 
         <script src="js/app/app.js"></script>
 

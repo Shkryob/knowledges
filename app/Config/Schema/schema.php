@@ -33,6 +33,7 @@ class AppSchema extends CakeSchema {
 
 	public $lessons = array(
 		'name' => array('type' => 'string', 'null' => false, 'default' => null),
+                'description' => array('type' => 'string', 'null' => false, 'default' => null),
                 'thumb_url' => array('type' => 'string', 'null' => false, 'default' => null),
                 'full_image_url' => array('type' => 'string', 'null' => false, 'default' => null),
 		'start' => array('type' => 'date', 'null' => true, 'default' => null),

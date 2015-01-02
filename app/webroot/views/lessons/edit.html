@@ -6,6 +6,10 @@
         <input type="text" data-ng-model="data.name" class="form-control" id="name" required>
     </div>
     <div class="form-group">
+        <label for="description">{{'Description' | translate}}</label>
+        <textarea ckeditor="editorOptions" ng-model="data.description"></textarea>
+    </div>
+    <div class="form-group">
         <label for="image">{{'Featured Image' | translate}}:</label>
         <input type="file"
                accept="image/*" name="file"
