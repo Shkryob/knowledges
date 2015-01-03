@@ -3,7 +3,8 @@
     <div class="col-xs-6 col-md-3" data-ng-repeat="lesson in lessons">
         <a href="{{'#/answer/' + lesson.Lesson.id}}"
            class="thumbnail">
-            <img data-ng-src="{{lesson.Lesson.thumb_url}}"
+            <img data-ng-src="{{lesson.Image['thumb']}}"
+                 data-ng-if="lesson.Image['thumb']"
                  alt="{{lesson.Lesson.name}}"
                  class="img-rounded"
                  width="100%">

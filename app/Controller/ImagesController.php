@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
 /**
  * Images Controller
  *
- * @property Role $Role
+ * @property Image $Image
  * @property PaginatorComponent $Paginator
  */
 class ImagesController extends AppController {
@@ -27,19 +27,32 @@ class ImagesController extends AppController {
      * @return void
      */
     public function add() {
+        $data = array();
         if(isset($_FILES['file'])) {
             $tempPath = $_FILES['file']['tmp_name'];
-            $thumbURL = $this->Image->resize($tempPath, $this->thumbResizeOtions);
-            $fullURL = $this->Image->resize($tempPath, $this->fullResizeOtions);
-        }
-        if (isset($thumbURL)) {
-            $data['thumbURL'] = $thumbURL;
+            $fileInfo = pathinfo($tempPath);
+            $fname = sha1_file($tempPath) . $fileInfo['extension'];
+            $thumbURL = $this->ImageResize->resize($tempPath, $this->thumbResizeOtions, $fname);
+            $mediumURL = $this->ImageResize->resize($tempPath, $this->fullResizeOtions, $fname);
+            $fullURL = '/img/uploaded/' . $fname;
+            $fullPath = WWW_ROOT . DS . 'img' . DS . 'uploaded' . DS . $fname;
+            copy($tempPath, $fullPath);
         }
         if (isset($fullURL)) {
-            $data['fullURL'] = $fullURL;
-            $message['message'] = __('Image was uploaded.');
+            $imageData = array(
+                'name' => $fileInfo['basename'],
+                'full' => $fullURL,
+                'medium' => $mediumURL,
+                'thumb' => $thumbURL
+            );
+            $this->Image->save($imageData);
+            $id = $this->Image->getLastInsertID();
+            $options = array('conditions' => array('Image.' . $this->Image->primaryKey => $id));
+            $image = $this->Image->find('first', $options);
+            $data['message'] = __('Image was uploaded.');
+            $data['image'] = $image['Image'];
         } else {
-            $message['message'] = __('Can not upload image.');
+            $data['message'] = __('Can not upload image.');
         }
         $this->jsonResponse($data);
     }

@@ -36,7 +36,7 @@ class AppController extends Controller {
         'Acl',
         'RequestHandler',
         'Session',
-        'ImageCropResize.Image'
+        'ImageCropResize.ImageResize'
     );
 
     public function beforeFilter() {
