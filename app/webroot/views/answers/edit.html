@@ -1,8 +1,9 @@
 <form data-ng-submit="update()">
     <h3>{{data.name}}</h3>
-    <img data-ng-src="{{data.full_image_url}}"
-        alt="{{data.name}}"
-        class="img-responsive">
+    <img data-ng-src="{{data['Image']['medium']}}"
+         data-ng-if="data['Image']['medium']"
+         alt="{{data.name}}"
+         class="img-responsive">
     <p>
         {{'Deadline' | translate}}: {{data.end}}
     </p>

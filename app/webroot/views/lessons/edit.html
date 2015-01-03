@@ -15,7 +15,7 @@
                accept="image/*" name="file"
                ng-model="picFile"
                ng-file-select="onFileSelect($files)">
-        <img data-ng-if="data['thumb_url']" data-ng-src="{{data['thumb_url']}}">
+        <img data-ng-if="data['Image']['thumb']" data-ng-src="{{data['Image']['thumb']}}">
         <br>
         <button type="button" data-ng-click="clearImage()">{{'Clear Image' | translate}}</button>
     </div>

@@ -21,14 +21,14 @@ function ($scope, $routeParams, $q, $upload, Lessons, Groups) {
             data: {fname: $scope.fname},
             file: file
         }).success(function (data, status, headers, config) {
-            $scope.data['full_image_url'] = data['fullURL'];
-            $scope.data['thumb_url'] = data['thumbURL'];
+            $scope.data['Image'] = data['image'];
+            $scope.data['image_id'] = data['image']['id'];
         });
     };
     
     $scope.clearImage = function () {
-        $scope.data['full_image_url'] = '';
-        $scope.data['thumb_url'] = '';
+        $scope.data['Image'] = {};
+        $scope.data['image_id'] = 0;
     };
     
     $scope.update = function() {

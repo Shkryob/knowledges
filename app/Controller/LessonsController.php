@@ -54,6 +54,7 @@ class LessonsController extends AppController {
         $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
         $lesson = $this->Lesson->find('first', $options);
         $lesson['Lesson']['Question'] = $lesson['Question'];
+        $lesson['Lesson']['Image'] = $lesson['Image'];
         $this->jsonResponse($lesson['Lesson']);
     }
 
@@ -68,6 +69,7 @@ class LessonsController extends AppController {
         if ($this->request->is('post')) {
             $this->Lesson->create();
             $data = $this->request->data;
+            unset($data['Image']);
             $data['start'] = date('Y-m-d', strtotime($data['start']));
             $data['end'] = date('Y-m-d', strtotime($data['end']));
             if ($this->Lesson->saveAssociated($this->request->data)) {
@@ -97,6 +99,7 @@ class LessonsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
             $oldQuestions = $this->Lesson->find('first', $options)['Question'];
+            unset($this->request->data['Image']);
             if ($this->Lesson->saveAssociated($this->request->data)) {
                 $newQuestions = $this->request->data['Question'];
                 $this->deleteUnusedQuestions($oldQuestions, $newQuestions);

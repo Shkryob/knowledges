@@ -40,6 +40,13 @@ class Lesson extends AppModel {
             'conditions' => '',
             'fields' => '',
             'order' => ''
+        ),
+        'Image' => array(
+            'className' => 'Image',
+            'foreignKey' => 'image_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
         )
     );
 

@@ -1,5 +1,5 @@
 <?php
-class ImageComponent extends Component {
+class ImageResizeComponent extends Component {
 
 	public $helpers = array('Html');
 
@@ -15,7 +15,7 @@ class ImageComponent extends Component {
 		$explode = explode(DS,realpath(__DIR__ . DS . '..' . DS . '..'));
 		$pluginName = end($explode);
 
-		App::uses('Image', $pluginName . '.Lib');
+		App::uses('ImageResize', $pluginName . '.Lib');
 	}
 
 /**
@@ -28,7 +28,7 @@ class ImageComponent extends Component {
  *
  * @access public
  */
-	public function resize($path, $options = array()) {
+	public function resize($path, $options = array(), $fname = '') {
 		$options = array_merge(array(
 			'width'				=> null,	//Width of the new Image, Default is Original Width
 			'height'			=> null,	//Height of the new Image, Default is Original Height
@@ -45,7 +45,7 @@ class ImageComponent extends Component {
 			${$key} = $option;
 		}
 
-		$relFile = Image::resize($path, $options);
+		$relFile = ImageResize::resize($path, $options, $fname);
 
 		//Return only the URL
 		if ($options['urlOnly']) {
