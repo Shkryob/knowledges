@@ -30,7 +30,7 @@ class ImagesController extends AppController {
         $data = array();
         if(isset($_FILES['file'])) {
             $tempPath = $_FILES['file']['tmp_name'];
-            $fileInfo = pathinfo($tempPath);
+            $fileInfo = pathinfo($_FILES['file']['name']);
             $fname = sha1_file($tempPath) . $fileInfo['extension'];
             $thumbURL = $this->ImageResize->resize($tempPath, $this->thumbResizeOtions, $fname);
             $mediumURL = $this->ImageResize->resize($tempPath, $this->fullResizeOtions, $fname);
