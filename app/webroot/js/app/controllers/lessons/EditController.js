@@ -33,7 +33,11 @@ function ($scope, $routeParams, $q, $upload, Lessons, Groups) {
     
     $scope.update = function() {
         $scope.data['id'] = $scope.id;
-        $scope.data.group_id = $scope.data.group.Group.id;
+        if ($scope.data.group) {
+            $scope.data.group_id = $scope.data.group.Group.id;
+        } else {
+            $scope.data.group_id = 0;
+        }
         Lessons.update($scope.data, function(data) {
             $scope.showError(data.message);
         }, function(response) {

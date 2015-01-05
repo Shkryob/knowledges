@@ -7,8 +7,16 @@ function ($scope, $routeParams, $q, Users, Roles, Groups) {
     
     $scope.update = function() {
         $scope.data['id'] = $scope.id;
-        $scope.data.role_id = $scope.data.role.Role.id;
-        $scope.data.group_id = $scope.data.group.Group.id;
+        if ($scope.data.role) {
+            $scope.data.role_id = $scope.data.role.Role.id;
+        } else {
+            $scope.data.role_id = 0;
+        }
+        if ($scope.data.group) {
+            $scope.data.group_id = $scope.data.group.Group.id;
+        } else {
+            $scope.data.group_id = 0;
+        }
         Users.update($scope.data, function(data) {
             $scope.showError(data.message);
         }, function(response) {
