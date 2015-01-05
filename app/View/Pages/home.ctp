@@ -8,8 +8,18 @@
     <body data-ng-app="UserManager" data-ng-controller="MainController">
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">{{'Homework.in.ua' | translate}}</a>
+                <a class="navbar-brand" href="#">{{'Homework.in.ua' | translate}}</a>
+                <button
+                    type="button"
+                    class="navbar-toggle btn-success"
+                    ng-init="isCollapsed = true"
+                    ng-click="isCollapsed = !isCollapsed">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-header navbar-collapse" ng-class="{collapse: isCollapsed}">
+                    
                     <ul class="nav navbar-nav">
                         <li data-ng-class="{'active': path=='/roles/'}"
                             data-ng-if="currentUser.role == 'Admin'">
@@ -33,7 +43,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="navbar-form navbar-right">
+                <div class="navbar-form navbar-right navbar-collapse" ng-class="{collapse: isCollapsed}">
                     <div class="btn-group">
                         <label  data-ng-repeat="lang in languages"
                                 data-ng-click="changeLanguage(lang.key)"
@@ -55,7 +65,6 @@
                        data-ng-click="logout($event)"
                        data-ng-if="isLoggedIn()">{{'Logout' | translate}}</a>
                 </div>
-
             </div>
         </nav>
 
