@@ -96,5 +96,10 @@
     "The user has been deleted.": "Пользователь удален.",
     "The user could not be deleted. Please, try again.": "Пользователь не удален. Попробуйте еще раз.",
     "Search": "Искать",
-    "Generate Slideshow": "Создать слайдшоу"
+    "Generate Slideshow": "Создать слайдшоу",
+    
+    "Today": "Сегодня",
+    "Clear": "Очистить",
+    "Close": "Закрыть"
+    
 }

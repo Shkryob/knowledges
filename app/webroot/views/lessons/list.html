@@ -14,8 +14,8 @@
         <tr data-ng-repeat="lesson in lessons">
             <td>{{lesson.Lesson.id}}</td>
             <td>{{lesson.Lesson.name}}</td>
-            <td>{{lesson.Lesson.start}}</td>
-            <td>{{lesson.Lesson.end}}</td>
+            <td>{{lesson.Lesson.start | date:'dd MMMM yyyy'}}</td>
+            <td>{{lesson.Lesson.end | date:'dd MMMM yyyy'}}</td>
             <td>{{lesson.Group.name}}</td>
             <td>
                 <a class="btn btn-success"

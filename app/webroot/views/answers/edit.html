@@ -5,7 +5,7 @@
          alt="{{data.name}}"
          class="img-responsive">
     <p>
-        {{'Deadline' | translate}}: {{data.end}}
+        {{'Deadline' | translate}}: {{data.end | date:'dd MMMM yyyy'}}
     </p>
     <div ng-bind-html="trustAsHtml(data.description)">
 

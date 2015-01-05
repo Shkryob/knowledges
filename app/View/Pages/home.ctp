@@ -82,6 +82,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-resource.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-route.js"></script>
         <script src="js/vendor/ui-bootstrap-tpls-0.12.0.min.js"></script>
+        <script src="http://code.angularjs.org/1.0.8/i18n/angular-locale_ru-ru.js"></script>
         <script src="js/vendor/angular-translate.min.js"></script>
         <script src="js/vendor/angular-translate-loader-static-files.min.js"></script>
         <script src="js/vendor/angular-file-upload-shim.min.js"></script>

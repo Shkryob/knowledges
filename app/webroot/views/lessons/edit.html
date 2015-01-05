@@ -24,6 +24,9 @@
             {{'Start' | translate}}:
             <input type="text"
                    datepicker-popup="dd MMMM yyyy"
+                   current-text="{{'Today' | translate}}"
+                   clear-text="{{'Clear' | translate}}"
+                   close-text="{{'Close' | translate}}"
                    data-ng-model="data.start"
                    is-open="startDate.isOpen"
                    datepicker-options="dateOptions"
