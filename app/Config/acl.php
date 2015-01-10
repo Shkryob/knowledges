@@ -40,6 +40,7 @@ $config['rules'] = array(
         'controllers/answers/' => 'Role/Teacher',
         'controllers/groups/' => 'Role/Teacher',
         'controllers/users/' => 'Role/Teacher',
+        'controllers/images/' => 'Role/Teacher',
         
         'controllers/lessons/index' => 'Role/Pupil',
         'controllers/lessons/view' => 'Role/Pupil',
