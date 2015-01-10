@@ -49,6 +49,10 @@ class PresentationsController extends AppController {
     
     private function addTitlteImage($objPHPPowerPoint, $lesson) {
         // Create a shape (drawing)
+        if (!isset($lesson['Lesson']['full_image_url'])
+                || empty($lesson['Lesson']['full_image_url'])) {
+            return;
+        }
         $currentSlide = $objPHPPowerPoint->getActiveSlide();
         $shape = $currentSlide->createDrawingShape();
         $image = WWW_ROOT . $lesson['Lesson']['full_image_url'];
