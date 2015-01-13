@@ -2,7 +2,6 @@ app.controller('AnswersEditController', ['$scope', '$routeParams', '$q', '$sce',
 function ($scope, $routeParams, $q, $sce, Lessons, Groups, Answers) {
     $scope.data = {};
     $scope.id = $routeParams.id;
-    $scope.groups = Groups.query();
     $scope.answers = Answers.view_my({'id': $scope.id});
     $scope.encodeURIComponent = encodeURIComponent;
     $scope.trustAsHtml = $sce.trustAsHtml;
@@ -25,17 +24,6 @@ function ($scope, $routeParams, $q, $sce, Lessons, Groups, Answers) {
     
     $scope.getLesson = function() {
         $scope.data = Lessons.get({id: $scope.id});
-        $q.all([
-            $scope.data.$promise,
-            $scope.groups.$promise
-        ]).then(function (data) {
-            angular.forEach($scope.groups, function (val, key) {
-                if (val.Group.id === $scope.data.group_id) {
-                    $scope.data.group = val;
-                    return false;
-                }
-            });
-        });
     };
     
     $scope.getLesson();
