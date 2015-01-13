@@ -54,6 +54,10 @@ Router::connect(
     '/answers/save_my',
     array('controller' => 'answers', 'action' => 'saveMy')
 );
+Router::connect(
+    '/lessons/view_my',
+    array('controller' => 'lessons', 'action' => 'viewMy')
+);
 
 Router::mapResources('users');
 Router::mapResources('groups');

@@ -96,5 +96,8 @@
     "The user has been deleted.": "Користуача видалено.",
     "The user could not be deleted. Please, try again.": "Користувача не видалено. Спробуйте ще раз.",
     "Search": "Шукати",
-    "Generate Slideshow": "Зтворити слайдшоу"
+    "Generate Slideshow": "Зтворити слайдшоу",
+    
+    "Current": "Поточні",
+    "Passed": "Минулі"
 }

@@ -57,6 +57,26 @@ class LessonsController extends AppController {
         $lesson['Lesson']['Image'] = $lesson['Image'];
         $this->jsonResponse($lesson['Lesson']);
     }
+    
+    /**
+     * viewMy method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function viewMy() {
+        $user = $this->Session->read('user');
+        $curDate = date("Y-m-d");
+        $conditions = array('Lesson.start <=' => $curDate);
+        if ($user && isset($user['group_id']) && $user['group_id']) {
+            $conditions['Lesson.group_id'] = $user['group_id'];
+        }
+        
+        $options = array('conditions' => $conditions);
+        $lessons = $this->Lesson->find('all', $options);
+        $this->jsonResponse($lessons);
+    }
 
     /**
      * add method

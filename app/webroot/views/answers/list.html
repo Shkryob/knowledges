@@ -1,21 +1,26 @@
 <h3>{{'Lessons'| translate}}</h3>
-<div class="row" data-ng-repeat="lessons in rows">
-    <div class="col-xs-6 col-md-3" data-ng-repeat="lesson in lessons">
-        <a href="{{'#/answer/' + lesson.Lesson.id}}"
-           class="thumbnail">
-            <img data-ng-src="{{lesson.Image['thumb']}}"
-                 data-ng-if="lesson.Image['thumb']"
-                 alt="{{lesson.Lesson.name}}"
-                 class="img-rounded"
-                 width="100%">
-        </a>
-        <div class="caption">
-            <h3>{{lesson.Lesson.name}}</h3>
-            <p>
+
+<tabset>
+    <tab ng-repeat="(key, lessonsRows) in rows" heading="{{key| translate}}" active="tab.active">
+        <div class="row" data-ng-repeat="lessons in lessonsRows">
+            <div class="col-xs-6 col-md-3" data-ng-repeat="lesson in lessons">
                 <a href="{{'#/answer/' + lesson.Lesson.id}}"
-                   class="btn btn-success"
-                   role="button">{{'Resolve'| translate}}</a>
-            </p>
+                   class="thumbnail">
+                    <img data-ng-src="{{lesson.Image['thumb']}}"
+                         data-ng-if="lesson.Image['thumb']"
+                         alt="{{lesson.Lesson.name}}"
+                         class="img-rounded"
+                         width="100%">
+                </a>
+                <div class="caption">
+                    <h3>{{lesson.Lesson.name}}</h3>
+                    <p>
+                        <a href="{{'#/answer/' + lesson.Lesson.id}}"
+                           class="btn btn-success"
+                           role="button">{{'Resolve'| translate}}</a>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </tab>
+</tabset>

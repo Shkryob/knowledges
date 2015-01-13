@@ -44,7 +44,7 @@ $config['rules'] = array(
         'controllers/presentations/' => 'Role/Teacher',
         
         'controllers/lessons/index' => 'Role/Pupil',
-        'controllers/lessons/view' => 'Role/Pupil',
+        'controllers/lessons/viewMy' => 'Role/Pupil',
         'controllers/answers/viewMy' => 'Role/Pupil',
         'controllers/answers/saveMy' => 'Role/Pupil',
     ),
