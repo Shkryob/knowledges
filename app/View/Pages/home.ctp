@@ -83,7 +83,7 @@
             <hr>
 
             <footer>
-                <p>&copy; <a href="http://geeksforless.com/" target="_blank"><i>Geeks<font color="red">For</font>Less</i></a></p>
+                <p>&copy; <a href="mailto:shkryob@ya.ru">Kostya Shkryob</a></p>
             </footer>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.js"></script>
