@@ -21,7 +21,7 @@ class DATABASE_CONFIG {
         'password' => 'temp123$',
         'database' => 'know',
         'prefix' => '',
-            //'encoding' => 'utf8',
+        'encoding' => 'utf8',
     );
     public $default = array(
         'datasource' => 'Database/Mysql',
@@ -31,7 +31,7 @@ class DATABASE_CONFIG {
         'password' => 'temp123$',
         'database' => 'know',
         'prefix' => '',
-            //'encoding' => 'utf8',
+        'encoding' => 'utf8',
     );
 
 }
